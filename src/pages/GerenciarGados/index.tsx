@@ -2,7 +2,7 @@ import React,{ useState, useEffect } from 'react';
 
 import { Wrapper, Heading } from './styles';
 
-const Camera: React.FC = () => {
+const Chat: React.FC = () => {
 
   const [ isLoading, setLoading ] = useState( true );
 
@@ -11,7 +11,7 @@ const Camera: React.FC = () => {
     setTimeout(() => 
     {
       setLoading( false );
-    }, 1000);
+    }, 500);
 
   }, []);  
   
@@ -32,4 +32,4 @@ const Camera: React.FC = () => {
   );
 };
 
-export default Camera;
+export default Chat;

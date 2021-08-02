@@ -1,14 +1,14 @@
 import Menu from "../components/MenuFooter";
 
 export default {
-  primary: '#222',
-  secondary: '#32a4a8',
-  fonte: '#fff',
-  menu: '#333'
-  // primary: '#f7f7f8',
-  // fonte: '#000',
-  // menu: '#fff',
-  // secondary: '#32a4a8'
+  // primary: '#fff',
+  // secondary: '#32a4a8',
+  // fonte: '#36ff9e',
+  // menu: '#ccdbdb'
+  primary: '#f7f7f8',
+  fonte: '#000',
+  menu: '#fff',
+  secondary: '#27b844'
   
 };
 

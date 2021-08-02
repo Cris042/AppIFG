@@ -1,22 +1,60 @@
-import styled from 'styled-components/native';
-import Constants from 'expo-constants';
-import { Platform } from 'react-native';
+import { Dimensions, StyleSheet } from "react-native";
 
-import colors from '../../styles/colors';
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    position: "relative",
+  },
 
-const statusBarHeight =
-  Platform.OS === 'android' ? Constants.statusBarHeight : 0;
+  mapStyle: {
+    width: Dimensions.get("window").width,
+    height: "100%",
+  },
 
-export const Wrapper = styled.SafeAreaView`
-  background: ${ colors.primary };
-  flex: 1;
-  padding-top: ${ statusBarHeight + 'px' };
+  calloutContainer: {
+    width: 160,
+    height: 46,
+    paddingHorizontal: 16,
+    backgroundColor: "rgba(255, 255, 255, 0.8)",
+    borderRadius: 16,
+    justifyContent: "center",
+    elevation: 3,
+  },
 
-  justify-content: center;
-  align-items: center;
-`;
+  calloutText: {
+    color: "#0089a5",
+    fontSize: 14,
+  },
 
-export const Heading = styled.Text`
-  color: ${ colors.fonte };
-  font-size: 30px;
-`;
+  footer: {
+    position: "absolute",
+    left: 24,
+    right: 24,
+    bottom: 32,
+
+    backgroundColor: "#fff",
+    borderRadius: 20,
+    height: 56,
+    paddingLeft: 24,
+
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+
+    elevation: 3,
+  },
+
+  footerText: {
+    color: "#8fa7b3",
+  },
+
+  createOrphanageButton: {
+    width: 56,
+    height: 56,
+    backgroundColor: "#27b844",
+    borderRadius: 20,
+
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});

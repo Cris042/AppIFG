@@ -30,30 +30,27 @@ export const BoxLogin = styled.View`
 `;
 
 export const Card = styled.View`
- 
-  background: transparent;
-  color: ${ colors.fonte };
-  border: 1px #000;
-  border-radius: 8px;
+   width: 40%; 
+   margin-left: 30%;
+   margin-bottom: 20%;
+`;
 
-  height: 120px;
-  width: 50%;
-
-  margin-left: 25%;
-  margin-right: 25%;
-  margin-bottom: 20%;
+export const Image = styled.Image`
+  width: 100px;
+  height: 100px;
 `;
 
 
+
 export const Input = styled.TextInput`
-  height: 60px;
+  height: 54px;
   width: 100%;
 
   background: transparent;
   color: ${ colors.fonte };
 
-  border: 1px solid #000;
-  border-radius: 5px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
 
   padding-left: 20px;
   margin-bottom: 5px;
@@ -63,15 +60,16 @@ type ButtonProps = { solid ? : boolean };
 
 export const Button =  styled.Button<ButtonProps>`
   width: 100%;
-  height: 75px;
+  height: 70px;
 
-  background: ${ colors.secondary };
+  background: ${ colors.primary };
 
   text-align: center;
   color: #fff;
   
-  margin-top: 50px;
-  border-radius: 18px;
+  border-radius: 14px;
+
+  margin-top: 10px;
   padding-top: 10px;
   
 `;

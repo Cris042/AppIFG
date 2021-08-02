@@ -7,9 +7,11 @@ import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../../styles/colors';
 
 import Home from '../../pages/Home';
-import Chat from '../../pages/Chat';
-import Camera from '../../pages/Camera';
+import GerenciarGados from '../../pages/GerenciarGados';
 import Login from '../../pages/Login';
+import CadastroFazenda from '../../pages/CadastroFazenda';
+import SelectMapPosition from '../../pages/SelectMapPosition';
+import MeusDados from '../../pages/AtualizarDados';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -23,6 +25,8 @@ const Menu: React.FC = () => {
                     style: 
                     {
                         height: 60,
+                        width: 720,
+                        marginLeft: -95,
                         backgroundColor: colors.menu,
                         borderTopWidth: 0,
                     },
@@ -49,74 +53,97 @@ const Menu: React.FC = () => {
                     inactiveTintColor: colors.fonte,
                     activeTintColor: colors.secondary,
                 }}
+                
             >
-
-                <Screen
-                    name="Camera"
-                    component={ Camera }
-                    options={{
-                    tabBarIcon: ({ size, focused }) => 
-                    {
-                        return (
-                            <MaterialCommunityIcons
-                                name= "camera-outline"
-                                size= { size }
-                                color= { focused ? colors.secondary : colors.fonte }
-                            />
-                        );
-                    },
-                    }}
-                />
-                
-                <Screen
-                    name="Home"
-                    component={ Home }
-                    options={{
-                    tabBarIcon: ({ size, focused }) => 
-                    {
-                        return (
-                            <Ionicons
-                                name = "md-home"
-                                size = { size }
-                                color = { focused ? colors.secondary : colors.fonte }
-                            />
-                        );
-                    },
-                    }}
-                
-                />
-
-                <Screen
-                    name="Chat"
-                    component={ Chat }
-                    options={{
-                    tabBarIcon: ({ size, focused }) => 
-                    {
-                        return (
-                            <MaterialCommunityIcons
-                                name = "chat-outline"
-                                size = { size }
-                                color = { focused ? colors.secondary : colors.fonte }
-                            />
-                        );
-                    },
-                    }}
-                />
 
                 <Screen
                     name="Login"
                     component={ Login }
                     options={{
-                    tabBarIcon: ({ size, focused }) => 
-                    {
-                        return (
-                            <Ionicons
-                                name = "md-add"
-                                size = { size }
-                                color = { focused ? colors.secondary : colors.fonte }
-                            />
-                        );
-                    },
+
+                        tabBarVisible:false,
+                        tabBarLabel: "",   
+
+                    }}
+                />     
+
+                <Screen
+                    name="Home"
+                    component={ Home }
+                    options={{
+
+                        tabBarIcon: ({ size, focused }) => 
+                        {
+                            return (
+                                <Ionicons
+                                    name = "md-home"
+                                    size = { size }
+                                    color = { focused ? colors.secondary : colors.fonte }
+                                />
+                            );
+                        },
+
+                    }}
+                
+                />
+
+                <Screen
+                    name="Gerenciar"
+                    component={ GerenciarGados }
+                    options= {{
+
+                        tabBarIcon: ({ size, focused }) => 
+                        {
+                            return (
+                                <MaterialCommunityIcons
+                                    name = "tractor"
+                                    size = { size }
+                                    color = { focused ? colors.secondary : colors.fonte }
+                                />
+                            );
+                        },
+                        
+                    }}
+                />
+
+                <Screen
+                    name="Meus Dados"
+                    component={  MeusDados }
+                    options={{
+
+                        tabBarIcon: ({ size, focused }) => 
+                        {
+                            return (
+                                <Ionicons
+                                    name = "md-person-circle"
+                                    size = { size }
+                                    color = { focused ? colors.secondary : colors.fonte }
+                                />
+                            );
+                        },
+
+                    }}
+                />
+
+                <Screen 
+                    name="SelectMapPosition"
+                    component={ SelectMapPosition }
+                    options={{
+
+                        tabBarVisible:false,
+                        tabBarLabel: "",                
+
+                    }}
+                />
+
+                <Screen
+                    name="CadastroFazenda"
+                    component={ CadastroFazenda }
+                    options={{
+
+                        tabBarVisible:false,
+                        tabBarLabel: "",   
+
                     }}
                 />
 
