@@ -103,7 +103,7 @@ export default function OrphangesMap() {
 
       )}
 
-      <View style={styles.footer}>
+       <View style={styles.footer}>
 
         <Text style={styles.footerText}>
           {orphanages.length} fazendas(s) encontrado(s)
@@ -119,7 +119,7 @@ export default function OrphangesMap() {
 
         </RectButton>
 
-      </View>
+       </View>
 
     </View>
 

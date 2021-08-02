@@ -1,9 +1,10 @@
 import React,{ useState, useEffect } from 'react';
 
-import { Wrapper, BoxLogin, Input, Button, Card, Image } from './styles';
+import { Wrapper, BoxLogin, Input, Button, Card, Image, Gif} from './styles';
 import { useNavigation } from "@react-navigation/native";
 
 import Logo from "../../../assets/icon.png";
+import GifImage from "../../images/loading.gif";
 
 export default function Login() {
 
@@ -29,34 +30,55 @@ export default function Login() {
 
   }
 
+  const [ isLoading, setLoading ] = useState( true );
+
+  useEffect(() => 
+  {
+    setTimeout(() => 
+    {
+      setLoading( false );
+    }, 2000);
+
+  }, []);  
   
   
   return (
-    <Wrapper>    
-        <BoxLogin>
+    <Wrapper> 
 
-          <Card>
-              <Image source={ Logo } />
-          </Card>
+          { isLoading ? 
+          (
+             <Image source={ GifImage } />
+          ) : 
+          
+          (
 
-          <Input
-              placeholder={'Digite seu email'}
-              onChangeText={setEmail} 
-          />
+            <BoxLogin>
 
-          <Input
-              placeholder={'Digite sua Senha'}
-              onChangeText={setSenha} 
-          />
+              <Card>
+                  <Image source={ Logo } />
+              </Card>
 
-          <Button
-            onPress={Logar}
-            title="Logar"
-            color="#27b844"
-          >
-          </Button>
+              <Input
+                  placeholder={'Digite seu Nome'}
+                  onChangeText={setEmail} 
+              />
 
-        </BoxLogin>
+              <Input
+                  placeholder={'Digite seu E-mail'}
+                  onChangeText={setEmail} 
+              />
+
+              <Button
+                onPress={Logar}
+                title="Continuar"
+                color="#27b844"
+              >
+              </Button>
+
+            </BoxLogin>
+
+          )}
+
     </Wrapper>
   );
 };

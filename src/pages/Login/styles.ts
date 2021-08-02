@@ -23,16 +23,15 @@ export const Heading = styled.Text`
 
 export const BoxLogin = styled.View`
   width: 80%;
-  height: 400px;
-
+  
   margin-left: 10%;
   margin-right: 10%;
 `;
 
 export const Card = styled.View`
-   width: 40%; 
-   margin-left: 30%;
-   margin-bottom: 20%;
+  width: 40%; 
+  margin-left: 30%;
+  margin-bottom: 20%;
 `;
 
 export const Image = styled.Image`
@@ -40,7 +39,10 @@ export const Image = styled.Image`
   height: 100px;
 `;
 
-
+export const Gif = styled.Image`
+  min-width: 200px;
+  min-height: 200px;
+`;
 
 export const Input = styled.TextInput`
   height: 54px;
