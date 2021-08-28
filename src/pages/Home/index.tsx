@@ -20,42 +20,54 @@ interface Orphanage {
   longitude: number;
 }
 
-export default function OrphangesMap() {
-  const navigation = useNavigation();
-  const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
+export default function Map() 
+{
+    const navigation = useNavigation();
+    const [ farms , setFarms ] = useState<Orphanage[]>([]);
 
-  const [initialPosition, setInitialPosition] = useState({
-    latitude: 0,
-    longitude: 0,
-  });
+    const [initialPosition, setInitialPosition] = useState({
+      latitude: -16.81508090497519,
+      longitude: -48.02909970297907,
+    });
 
-  useEffect(() => {
-    async function loadPosition() {
-      const { status } = await Location.requestForegroundPermissionsAsync();
+    useEffect(() => 
+    {
+      
+      async function loadPosition() 
+      {
+          const { status } = await Location.requestForegroundPermissionsAsync();
 
-      if (status !== "granted") {
-        Alert.alert(
-          "Ops!",
-          "Precisamos de sua permissão para obter a localização."
-        );
+          if (status !== "granted") 
+          {
+              Alert.alert(
+                "Ops!",
+                "Precisamos de sua permissão para obter a localização."
+              );
 
-        return;
+              return;
+          }
+
+          // const location = await Location.getCurrentPositionAsync();
+
+          // const { latitude, longitude } = location.coords;
+
+          // alert( initialPosition.latitude );
+
+          // setInitialPosition( { latitude, longitude } );
       }
 
-      const location = await Location.getCurrentPositionAsync();
+      loadPosition();
 
-      const { latitude, longitude } = location.coords;
-
-      setInitialPosition({ latitude, longitude });
-    }
-
-    loadPosition();
-  }, []);
+    }, []);
 
   
-  function handleNavigateToCreateOrphanage() {
+  function handleNavigateToCreateFarms() {
     navigation.navigate("SelectMapPosition", { initialPosition });
   }
+
+  // function handleNavigatFarmDetails() {
+  //   navigation.navigate("SelectMapPosition", { initialPosition });
+  // }
 
   return (
     <View style={styles.container}>
@@ -89,7 +101,7 @@ export default function OrphangesMap() {
           >
             <Callout
                 tooltip
-                // onPress={() => handleNavigateToOrphanageDetails(orphanage.id)}
+                // onPress={() => handleNavigatFarmDetails( farms.id)}
             >
                 <View style={styles.calloutContainer}>
                   <Text style={styles.calloutText}>{ "fazenda" }</Text>
@@ -106,14 +118,14 @@ export default function OrphangesMap() {
        <View style={styles.footer}>
 
         <Text style={styles.footerText}>
-          {orphanages.length} fazendas(s) encontrado(s)
+          { farms.length} fazendas(s) encontrado(s)
         </Text>
 
       
 
         <RectButton
           style={styles.createOrphanageButton}
-          onPress={handleNavigateToCreateOrphanage}
+          onPress={ handleNavigateToCreateFarms }
         >
           <Feather name="plus" size={20} color="#fff" />
 
