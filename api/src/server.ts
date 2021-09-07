@@ -2,12 +2,11 @@ import express from 'express';
 import cors from 'cors';
 import { join } from 'path';
 
-import 'express-async-errors';
-
-// import './database/connection';
-
 import routes from './routes';
 import errorHandler from './errors/handler';
+
+import 'express-async-errors';
+//import './database';
 
 const app = express();
 
