@@ -23,7 +23,7 @@
       email: string;
 
       @Column()
-      telephone: string;
+      telephone: number;
 
       @Column()
       size: number;
@@ -38,7 +38,7 @@
         cascade: ['insert', 'update', 'remove'],
       })
 
-      @JoinColumn( { name: 'orphanage_id' } )
+      @JoinColumn( { name: 'propertyID' } )
       images: Image[ ];
 
   }

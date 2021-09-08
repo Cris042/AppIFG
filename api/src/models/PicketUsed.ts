@@ -3,10 +3,12 @@
     Column,
     PrimaryGeneratedColumn,
     OneToMany,
+    JoinColumn,
   } from 'typeorm';
 
   import picket from './Picket';
   import cattle from './Cattle';
+import Picket from './Picket';
 
   @Entity('picket')
 
@@ -16,18 +18,25 @@
       @PrimaryGeneratedColumn('increment')
       id: number;
 
-      @OneToMany( () => picket, ( picket ) => picket.id, {
-        cascade: ['insert', 'update', 'remove'],
-      })
-
-      @OneToMany( () => cattle, ( cattle ) => cattle.id, {
-        cascade: ['insert', 'update', 'remove'],
-      })
-
       @Column()
       dateEntryPicket: Date;
 
       @Column()
       dateExitPicket: Date;
+
+      @OneToMany( () => picket, ( picket ) => picket.id, {
+        cascade: ['insert', 'update', 'remove'],
+      })
+
+      @JoinColumn( { name: 'picketID' } )
+      picket: picket;
+
+      @OneToMany( () => cattle, ( cattle ) => cattle.id, {
+        cascade: ['insert', 'update', 'remove'],
+      })
+
+      @JoinColumn( { name: 'cattleID' } )
+      cattle: cattle;
+
 
   }

@@ -35,12 +35,6 @@
       purchaseValue: number; 
       
       @Column()
-      motherLineage: number;
-
-      @Column()
-      dadLineage: number;
-
-      @Column()
       dailyConsumption: number;  
 
       @Column()

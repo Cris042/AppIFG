@@ -20,7 +20,7 @@
         path: string;
     
         @ManyToOne( () => property, ( property ) => property.images )
-        @JoinColumn( { name: 'orphanage_id' } )
+        @JoinColumn( { name: 'propertyID' } )
         Property: property;
 
   }

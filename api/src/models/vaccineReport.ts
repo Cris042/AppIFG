@@ -3,6 +3,7 @@ import {
     Column,
     PrimaryGeneratedColumn,
     OneToMany,
+    JoinColumn,
   } from 'typeorm';
 
   import vaccine from './Vaccine';
@@ -16,15 +17,21 @@ import {
       @PrimaryGeneratedColumn('increment')
       id: number;
 
+      @Column()
+      dateApplication: Date;
+
       @OneToMany( () => vaccine, ( vaccine ) => vaccine.id, {
         cascade: ['insert', 'update', 'remove'],
       })
+
+      @JoinColumn( { name: 'vaccineID' } )
+      picket: vaccine;
 
       @OneToMany( () => cattle, ( cattle ) => cattle.id, {
         cascade: ['insert', 'update', 'remove'],
       })
 
-      @Column()
-      dateApplication: Date;
+      @JoinColumn( { name: 'cattleID' } )
+      cattle: cattle;
 
   }
