@@ -40,24 +40,27 @@ export default function SelectMapPosition() {
           longitudeDelta: 0.008,
         }}
         style={styles.mapStyle}
-        onPress={handleSelectedMapPosition}
+        onPress={ handleSelectedMapPosition }
       >
-        {position.latitude !== 0 && (
-          <Marker
-            icon={mapMarkerImg}
-            coordinate={{
-              latitude: position.latitude,
-              longitude: position.longitude,
-            }}
-          />
-        )}
+
+          {position.latitude !== 0 && (
+            <Marker
+              icon={mapMarkerImg}
+              coordinate={{
+                latitude: position.latitude,
+                longitude: position.longitude,
+              }}
+            />
+          )}
+
       </MapView>
 
       {position.latitude !== 0 && (
-        <RectButton style={styles.nextButton} onPress={handleNextStep}>
+        <RectButton style={styles.nextButton} onPress={ handleNextStep }>
           <Text style={styles.nextButtonText}>Próximo</Text>
         </RectButton>
       )}
+
     </View>
   );
 }

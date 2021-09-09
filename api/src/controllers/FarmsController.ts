@@ -9,46 +9,49 @@ export default {
 
   async index( req: Request, res: Response ) 
   {
-    const orphanagesRepository = getRepository( picket );
-    const orphanages = await orphanagesRepository.find({
-      
-    });
+      const farmsRepository = getRepository( picket );
+      const farms = await farmsRepository.find({ 
+        
+      });
 
-    return res.json( picketView.renderMany( orphanages ) );
+      return res.json( picketView.renderMany( farms ) );
   },
 
-  async create( req: Request, res: Response ) 
+  async create( req: Request, res: Response )
   {
-    const orphanagesRepository = getRepository( picket );
+      const farmsRepository = getRepository( picket );
 
-    const schema = Yup.object().shape({
-      name: Yup.string().required(),
-      countFood: Yup.string().required(),
-      type: Yup.string().required(),
-      size: Yup.number().required(),
-      latitude: Yup.number().required(),
-      longitude: Yup.number().required(),
-      status: Yup.number().required(),
-    });
-    
-    // await schema.validate(
-    //   { ...req.body },
-    // );
+      // req.body.name = "test1";
+      // req.body.countFood = "0";
+      // req.body.type = "test";
+      // req.body.size = 123;
+      // req.body.latitude = -16.91508090497519;
+      // req.body.longitude = -48.02909970297907;
+      // req.body.status = 0;
 
-    req.body.name = "test";
-    req.body.countFood = "0";
-    req.body.type = "test";
-    req.body.size = 123;
-    req.body.latitude = -16.81508090497519;
-    req.body.longitude = -48.02909970297907;
-    req.body.status = 0;
+      // const schema = Yup.object().shape({
+      //   name: Yup.string().required().min(5),
+      //   countFood: Yup.string().required(),
+      //   type: Yup.string().required(),
+      //   size: Yup.number().required(),
+      //   latitude: Yup.number().required(),
+      //   longitude: Yup.number().required(),  
+      //   status: Yup.number().required(),
+      // });
+      
+      // await schema.validate(
+      //   { ...req.body },
+      //   { abortEarly: false }
+      // );
 
-    const data = orphanagesRepository.create({
-       ...req.body
-    });
+      const farms = farmsRepository.create({
+        ...req.body
+      });
 
-    await orphanagesRepository.save( data );
-    return res.status(201).json( data );
+      // await farmsRepository.save( farms );
+      console.log( farms );
+      return res.status(201).json( farms );
+
   },
 
 };

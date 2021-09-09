@@ -102,7 +102,7 @@ export default function Map()
         {
           return (
             <Marker
-              key={1234}
+              key={ farm.id }
               icon={mapMaker}
 
               calloutAnchor={{

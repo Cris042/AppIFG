@@ -2,7 +2,7 @@ import React,{ useState, useEffect } from 'react';
 
 import { Wrapper, Heading } from './styles';
 
-const Chat: React.FC = () => {
+const ChaMyData: React.FC = () => {
 
   const [ isLoading, setLoading ] = useState( true );
 
@@ -32,4 +32,4 @@ const Chat: React.FC = () => {
   );
 };
 
-export default Chat;
+export default ChaMyData;
