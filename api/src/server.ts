@@ -6,7 +6,7 @@ import routes from './routes';
 import errorHandler from './errors/handler';
 
 import 'express-async-errors';
-//import './database';
+import './database/index';
 
 const app = express();
 

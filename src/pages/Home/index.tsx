@@ -4,7 +4,7 @@ import MapView, { Callout,Marker,PROVIDER_GOOGLE } from "react-native-maps";
 import * as Location from "expo-location";
 import { Feather } from "@expo/vector-icons";
 
-import { useNavigation } from "@react-navigation/native";
+import {  useFocusEffect, useNavigation } from "@react-navigation/native";
 
 import mapMaker from "../../images/map-marker.png";
 
@@ -60,6 +60,20 @@ export default function Map()
 
     }, []);
 
+    useFocusEffect(() => 
+    {
+
+      async function loadOrphanages() 
+      {
+        const response = await api.get("picket");
+  
+        setFarms( response.data );
+      }
+  
+      loadOrphanages();
+
+    });
+
   
   function handleNavigateToCreateFarms() {
     navigation.navigate("SelectMapPosition", { initialPosition });
@@ -84,33 +98,37 @@ export default function Map()
             longitudeDelta: 0.014,
           }}
         >
+        { farms.map(( farm ) => 
+        {
+          return (
+            <Marker
+              key={1234}
+              icon={mapMaker}
 
-          <Marker
-            key={1234}
-            icon={mapMaker}
+              calloutAnchor={{
+                x: 0.75,
+                y: -0.1,
+              }}
 
-            calloutAnchor={{
-              x: 0.75,
-              y: -0.1,
-            }}
-
-            coordinate={{
-                latitude: initialPosition.latitude,
-                longitude: initialPosition.longitude,
-            }}
-          >
-            <Callout
-                tooltip
-                // onPress={() => handleNavigatFarmDetails( farms.id)}
+              coordinate={{
+                  latitude: farm.latitude,
+                  longitude: farm.longitude,
+              }}
             >
-                <View style={styles.calloutContainer}>
-                  <Text style={styles.calloutText}>{ "fazenda" }</Text>
-                </View>
+              <Callout
+                  tooltip
+                  // onPress={() => handleNavigatFarmDetails( farms.id)}
+              >
+                  <View style={styles.calloutContainer}>
+                    <Text style={styles.calloutText}>{  farm.name }</Text>
+                  </View>
 
-            </Callout>
+              </Callout>
+            </Marker>
+          );
 
-          </Marker>
-        
+        })}
+
         </MapView>
 
       )}
@@ -118,7 +136,7 @@ export default function Map()
        <View style={styles.footer}>
 
         <Text style={styles.footerText}>
-          { farms.length} fazendas(s) encontrado(s)
+          { farms.length } fazendas(s) encontrado(s)
         </Text>
 
       

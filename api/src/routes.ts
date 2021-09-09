@@ -7,6 +7,7 @@ import FarmsController from './controllers/FarmsController';
 const routes = Router();
 const upload = multer( uploadConfig );
 
-routes.get('/', FarmsController.index );
+routes.post('/orphanages', FarmsController.create);
+routes.get('/picket', FarmsController.index);
 
 export default routes;
