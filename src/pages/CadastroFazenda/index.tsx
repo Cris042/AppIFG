@@ -46,8 +46,7 @@ export default function Data() {
     data.append("longitude", String( longitude ) );
     data.append("status",  String( 0 ) );
 
- 
-    await api.post("orphanages", data );
+    await api.post("orphanages", { data });
     navigation.navigate("CadastroFazenda");
   } 
 

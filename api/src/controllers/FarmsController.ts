@@ -21,35 +21,34 @@ export default {
   {
       const farmsRepository = getRepository( picket );
 
-      // req.body.name = "test1";
-      // req.body.countFood = "0";
-      // req.body.type = "test";
-      // req.body.size = 123;
-      // req.body.latitude = -16.91508090497519;
-      // req.body.longitude = -48.02909970297907;
-      // req.body.status = 0;
+      req.body.name = req.body.data._parts[0][1];
+      req.body.countFood = req.body.data._parts[1][1];
+      req.body.type = req.body.data._parts[2][1];
+      req.body.size = req.body.data._parts[3][1];
+      req.body.latitude = req.body.data._parts[4][1];
+      req.body.longitude = req.body.data._parts[5][1];
+      req.body.status = req.body.data._parts[6][1];
 
-      // const schema = Yup.object().shape({
-      //   name: Yup.string().required().min(5),
-      //   countFood: Yup.string().required(),
-      //   type: Yup.string().required(),
-      //   size: Yup.number().required(),
-      //   latitude: Yup.number().required(),
-      //   longitude: Yup.number().required(),  
-      //   status: Yup.number().required(),
-      // });
+      const schema = Yup.object().shape({
+        name: Yup.string().required().min(5),
+        countFood: Yup.string().required(),
+        type: Yup.string().required(),
+        size: Yup.number().required(),
+        latitude: Yup.number().required(),
+        longitude: Yup.number().required(),  
+        status: Yup.number().required(),
+      });
       
-      // await schema.validate(
-      //   { ...req.body },
-      //   { abortEarly: false }
-      // );
+      await schema.validate(
+        { ...req.body },
+        { abortEarly: false }
+      );
 
       const farms = farmsRepository.create({
         ...req.body
       });
 
-      // await farmsRepository.save( farms );
-      console.log( farms );
+      await farmsRepository.save( farms );
       return res.status(201).json( farms );
 
   },
