@@ -16,7 +16,7 @@
       name: string;
 
       @Column()
-      countFood: string;
+      countFood: number;
 
       @Column()
       type: string;

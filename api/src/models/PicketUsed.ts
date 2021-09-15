@@ -2,15 +2,9 @@
     Entity,
     Column,
     PrimaryGeneratedColumn,
-    OneToMany,
-    JoinColumn,
   } from 'typeorm';
 
-  import picket from './Picket';
-  import cattle from './Cattle';
-import Picket from './Picket';
-
-  @Entity('picket')
+   @Entity('picketUsed')
 
   export default class PicketUsed
   {
@@ -24,19 +18,11 @@ import Picket from './Picket';
       @Column()
       dateExitPicket: Date;
 
-      @OneToMany( () => picket, ( picket ) => picket.id, {
-        cascade: ['insert', 'update', 'remove'],
-      })
+      @Column()
+      picketID: number;
 
-      @JoinColumn( { name: 'picketID' } )
-      picket: picket;
-
-      @OneToMany( () => cattle, ( cattle ) => cattle.id, {
-        cascade: ['insert', 'update', 'remove'],
-      })
-
-      @JoinColumn( { name: 'cattleID' } )
-      cattle: cattle;
+      @Column( )
+      cattleID: number;
 
 
   }

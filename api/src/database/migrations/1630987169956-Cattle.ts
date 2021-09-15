@@ -20,15 +20,14 @@ export class Cattle1630987169956 implements MigrationInterface {
 
                 {
                     name: 'breed',
-                    type: 'string',
+                    type: 'varchar',
                 },
 
                 {
                     name: 'name',
-                    type: 'string',
+                    type: 'varchar',
                     isUnique: true,
                 },
-
 
                 {
                     name: 'initialWeight',
@@ -68,20 +67,6 @@ export class Cattle1630987169956 implements MigrationInterface {
                 {
                     name: 'dateOfBirth',
                     type: 'date',
-                },
-                
-              ],
-
-              foreignKeys: 
-              [
-
-                {
-                  name: 'breed',
-                  columnNames: ['breed'],
-                  referencedTableName: 'breed',
-                  referencedColumnNames: ['name'],
-                  onUpdate: 'CASCADE',
-                  onDelete: 'CASCADE',
                 },
                 
               ],

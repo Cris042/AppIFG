@@ -62,20 +62,6 @@ export class Property1630987255836 implements MigrationInterface {
 
                 
               ],
-
-              foreignKeys: 
-              [
-                  
-                {
-                    name: 'image',
-                    columnNames: ['propertyID'],
-                    referencedTableName: 'image',
-                    referencedColumnNames: ['id'],
-                    onUpdate: 'CASCADE',
-                    onDelete: 'CASCADE',
-                },
-
-              ],
               
             })
         );

@@ -3,23 +3,20 @@ import {
   Column,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+  
 
-  @Entity('user')
+@Entity('pastureType')
 
-  export default class User
-  {
+export default class PastureType
+{
 
       @PrimaryGeneratedColumn('increment')
       id: number;
-    
+
       @Column()
       name: string;
 
       @Column()
-      email: string;
+      amountOffood: number;
 
-      @Column()
-      telephone: string;
-
-  }
-  
+ }

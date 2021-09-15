@@ -2,11 +2,7 @@
     Entity,
     Column,
     PrimaryGeneratedColumn,
-    OneToMany,
-    JoinColumn,
   } from 'typeorm';
-
-  import breed from './Breed';
 
   @Entity('cattle')
 
@@ -15,13 +11,9 @@
     
       @PrimaryGeneratedColumn('increment')
       id: number;
-
-      @OneToMany( () => breed, ( breed ) => breed.name, {
-        cascade: ['insert', 'update', 'remove'],
-      })
-
-      @JoinColumn( { name: 'breed' } )
-      breed: breed;
+      
+      @Column()
+      breed: string;   
 
       @Column()
       name: string;   

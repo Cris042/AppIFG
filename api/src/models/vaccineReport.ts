@@ -9,9 +9,9 @@ import {
   import vaccine from './Vaccine';
   import cattle from './Cattle';
 
-  @Entity('picket')
+  @Entity('vaccineReport')
 
-  export default class PicketUsed
+  export default class VaccineReport
   {
 
       @PrimaryGeneratedColumn('increment')
@@ -25,7 +25,10 @@ import {
       })
 
       @JoinColumn( { name: 'vaccineID' } )
-      picket: vaccine;
+      vaccine: vaccine;
+
+      @Column()
+      vaccineID: number;
 
       @OneToMany( () => cattle, ( cattle ) => cattle.id, {
         cascade: ['insert', 'update', 'remove'],
@@ -33,5 +36,8 @@ import {
 
       @JoinColumn( { name: 'cattleID' } )
       cattle: cattle;
+
+      @Column( { name: 'cattleID', type: 'int' })
+      cattleID: number;
 
   }

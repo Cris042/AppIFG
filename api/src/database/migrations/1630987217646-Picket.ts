@@ -60,7 +60,7 @@ export class Picket1630987217646 implements MigrationInterface {
                 },
 
               ],
-              
+
             })
         );
     }

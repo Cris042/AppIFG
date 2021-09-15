@@ -51,7 +51,7 @@ export default function Data() {
 
     const resp = await api.post("farms", { data } );
 
-    if( resp )
+    if( resp.status == 201 )
     {
       alert( "Cadastro efetuado!!" );
       navigation.navigate("Home");
@@ -87,7 +87,7 @@ export default function Data() {
       </Picker>
 
       <View style={styles.switchContainer}>
-        <Text style={styles.label}>O piquete esta disponivel ?</Text>
+        <Text style={styles.label}>O pasto esta disponivel ?</Text>
         <Switch
           thumbColor="#fff"
           trackColor={{ false: "#ccc", true: "#39CC83" }}

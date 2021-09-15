@@ -2,11 +2,8 @@
     Entity,
     Column,
     PrimaryGeneratedColumn,
-    ManyToOne,
-    JoinColumn,
   } from 'typeorm';
   
-  import property from './Property';
   
   @Entity('images')
 
@@ -18,10 +15,8 @@
     
         @Column()
         path: string;
-    
-        @ManyToOne( () => property, ( property ) => property.images )
-        @JoinColumn( { name: 'propertyID' } )
-        Property: property;
 
+        @Column()
+        propertyID: number;
   }
   

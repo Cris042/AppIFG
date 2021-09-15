@@ -21,35 +21,56 @@ export default {
   {
       const farmsRepository = getRepository( picket );
 
-      req.body.name = req.body.data._parts[0][1];
-      req.body.countFood = req.body.data._parts[1][1];
-      req.body.type = req.body.data._parts[2][1];
-      req.body.size = req.body.data._parts[3][1];
-      req.body.latitude = req.body.data._parts[4][1];
-      req.body.longitude = req.body.data._parts[5][1];
-      req.body.status = req.body.data._parts[6][1] == 'true' ? 1 : 0;
+      const name = req.body.data._parts[0][1],
+      countFood = req.body.data._parts[1][1],
+      type = req.body.data._parts[2][1],
+      size = req.body.data._parts[3][1],
+      latitude = req.body.data._parts[4][1],
+      longitude = req.body.data._parts[5][1],
+      status = req.body.data._parts[6][1] == 'true' ? 1 : 0;
 
       const schema = Yup.object().shape({
         name: Yup.string().required().min(3),
-        countFood: Yup.string().required(),
+        countFood: Yup.number().required(),
         type: Yup.string().required(),
         size: Yup.number().required(),
         latitude: Yup.number().required(),
         longitude: Yup.number().required(),  
         status: Yup.number().required(),
       });
-      
-      await schema.validate(
-        { ...req.body },
-        { abortEarly: false }
-      );
+    
+      try 
+      {
+        await schema.validate(
+          { name, countFood, type, size, latitude, longitude, status },
+          { abortEarly: false }
+        );
+      }
+      catch (err) 
+      {
+         return res.status(400);
+      }
 
       const farms = farmsRepository.create({
-        ...req.body
+        name,
+        countFood, 
+        type,
+        size, 
+        latitude, 
+        longitude, 
+        status 
       });
 
-      await farmsRepository.save( farms );
-      return res.status(201).json( { success: true} );
+      try 
+      {
+         await farmsRepository.save( farms );
+         return res.status(201);
+      } 
+      catch (err) 
+      {
+         return res.status(401);
+      }
+      
 
   },
 

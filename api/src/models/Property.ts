@@ -2,11 +2,7 @@
     Entity,
     Column,
     PrimaryGeneratedColumn,
-    OneToMany,
-    JoinColumn,
   } from 'typeorm';
-
-  import Image from './Image';
 
   @Entity('property')
 
@@ -33,12 +29,5 @@
 
       @Column()
       longitude: number;
-
-      @OneToMany( () => Image, ( image ) => image.Property, {
-        cascade: ['insert', 'update', 'remove'],
-      })
-
-      @JoinColumn( { name: 'propertyID' } )
-      images: Image[ ];
 
   }

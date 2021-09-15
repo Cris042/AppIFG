@@ -1,4 +1,9 @@
-  import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
 
   @Entity('breed')
 
@@ -12,6 +17,6 @@
         name: string;
 
         @Column()
-        consumption: string;
+        consumption: number;
 
    }

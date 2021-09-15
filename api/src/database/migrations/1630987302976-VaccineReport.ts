@@ -34,29 +34,6 @@ export class VaccineReport1630987302976 implements MigrationInterface {
                 },
 
               ],
-
-              foreignKeys: 
-              [
-                  
-                {
-                    name: 'vaccine',
-                    columnNames: ['vaccineID'],
-                    referencedTableName: 'vaccine',
-                    referencedColumnNames: ['id'],
-                    onUpdate: 'CASCADE',
-                    onDelete: 'CASCADE',
-                },
-
-                {
-                    name: 'cattlet',
-                    columnNames: ['cattleID'],
-                    referencedTableName: 'cattle',
-                    referencedColumnNames: ['id'],
-                    onUpdate: 'CASCADE',
-                    onDelete: 'CASCADE',
-                },
-
-              ],
               
             })
         );

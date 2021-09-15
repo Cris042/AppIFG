@@ -1,12 +1,12 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class PicketUsed1630987236758 implements MigrationInterface {
+export class PastureType1631678618098 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> 
     {
         await queryRunner.createTable(
             new Table({
-              name: 'picketUsed',
+              name: 'pastureType',
               columns: 
               [
                 {
@@ -19,25 +19,15 @@ export class PicketUsed1630987236758 implements MigrationInterface {
                 },
 
                 {
-                    name: 'dateEntryPicket',
-                    type: 'date',
+                    name: 'name',
+                    type: 'varchar',
+                    isUnique: true,
                 },
 
                 {
-                    name: 'dateExitPicket',
-                    type: 'date',
-                    isNullable: true,
-                },
-
-                {
-                    name: 'picketID',
-                    type: 'integer',
-                },
-
-                {
-                    name: 'cattleID',
-                    type: 'integer',
-                },
+                    name: 'amountOffood',
+                    type: 'varchar',
+                }
 
               ],
               
@@ -47,7 +37,7 @@ export class PicketUsed1630987236758 implements MigrationInterface {
 
     public async down(queryRunner: QueryRunner): Promise<void> 
     {
-        await queryRunner.dropTable('picketUsed');
+        await queryRunner.dropTable('pastureType');
     }
 
 }
