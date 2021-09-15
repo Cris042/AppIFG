@@ -72,6 +72,20 @@ export class Cattle1630987169956 implements MigrationInterface {
                 
               ],
 
+              foreignKeys: 
+              [
+
+                {
+                  name: 'breed',
+                  columnNames: ['breed'],
+                  referencedTableName: 'breed',
+                  referencedColumnNames: ['name'],
+                  onUpdate: 'CASCADE',
+                  onDelete: 'CASCADE',
+                },
+                
+              ],
+
             })
         );
     }

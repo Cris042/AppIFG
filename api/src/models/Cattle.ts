@@ -3,6 +3,7 @@
     Column,
     PrimaryGeneratedColumn,
     OneToMany,
+    JoinColumn,
   } from 'typeorm';
 
   import breed from './Breed';
@@ -15,9 +16,12 @@
       @PrimaryGeneratedColumn('increment')
       id: number;
 
-      @OneToMany( () => breed, ( breed ) => breed.id, {
+      @OneToMany( () => breed, ( breed ) => breed.name, {
         cascade: ['insert', 'update', 'remove'],
       })
+
+      @JoinColumn( { name: 'breed' } )
+      breed: breed;
 
       @Column()
       name: string;   

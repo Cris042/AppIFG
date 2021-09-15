@@ -11,4 +11,7 @@
         @Column()
         name: string;
 
+        @Column()
+        consumption: string;
+
    }

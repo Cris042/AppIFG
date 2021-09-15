@@ -27,10 +27,10 @@ export default {
       req.body.size = req.body.data._parts[3][1];
       req.body.latitude = req.body.data._parts[4][1];
       req.body.longitude = req.body.data._parts[5][1];
-      req.body.status = req.body.data._parts[6][1];
+      req.body.status = req.body.data._parts[6][1] == 'true' ? 1 : 0;
 
       const schema = Yup.object().shape({
-        name: Yup.string().required().min(5),
+        name: Yup.string().required().min(3),
         countFood: Yup.string().required(),
         type: Yup.string().required(),
         size: Yup.number().required(),
@@ -49,7 +49,7 @@ export default {
       });
 
       await farmsRepository.save( farms );
-      return res.status(201).json( farms );
+      return res.status(201).json( { success: true} );
 
   },
 

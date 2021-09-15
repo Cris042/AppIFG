@@ -21,7 +21,6 @@ export default function Login() {
     data.append("email", email);
     data.append("senha", senha);
 
-    // await api.post("orphanages", data);
 
     if( reg.test( email ) == true )
       navigation.navigate("Home");

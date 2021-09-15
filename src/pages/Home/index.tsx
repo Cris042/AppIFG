@@ -136,7 +136,7 @@ export default function Map()
        <View style={styles.footer}>
 
         <Text style={styles.footerText}>
-          { farms.length } fazendas(s) encontrado(s)
+          { farms.length } Pasto(s) encontrado(s)
         </Text>
 
       

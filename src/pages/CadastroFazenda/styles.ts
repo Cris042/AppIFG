@@ -9,9 +9,11 @@ export default StyleSheet.create({
     color: "#5c8599",
     fontSize: 24,
     marginBottom: 32,
+    marginTop: 32,
+    textAlign: "center",
     paddingBottom: 24,
-    borderBottomWidth: 0.8,
-    borderBottomColor: "#D3E2E6",
+    borderBottomWidth: 1.2,
+    borderBottomColor: "#ccc",
   },
 
   label: {
@@ -80,4 +82,35 @@ export default StyleSheet.create({
     fontSize: 16,
     color: "#FFF",
   },
+
+  picker: {
+    backgroundColor: "transparent",
+    borderWidth: 1.4,
+    borderColor: "#d3e2e6",
+    height: 56,
+    paddingVertical: 18,
+    paddingHorizontal: 24,
+    marginBottom: 16,
+    textAlignVertical: "top",
+  },
+
+  switchContaine: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 16,
+  },
+
+  map: {
+    height: 200,
+  },
+
+  mapView: {
+    borderWidth: 1.4,
+    borderColor: "#d3e2e6",
+    borderRadius: 20,
+    marginBottom: 32,
+    padding: 6,
+  }
+
 });
