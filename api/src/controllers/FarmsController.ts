@@ -17,6 +17,17 @@ export default {
       return res.json( picketView.renderMany( farms ) );
   },
 
+  async show( req: Request, res: Response)
+  {
+    const { id } = req.params;
+
+    const picketRepository = getRepository( picket );
+
+    const picketID = await picketRepository.findOneOrFail( id );
+
+    return res.json( picketView.render(  picketID ) );
+  },
+
   async create( req: Request, res: Response )
   {
       const farmsRepository = getRepository( picket );
@@ -71,7 +82,7 @@ export default {
          return res.status(401);
       }
       
-
+      
   },
 
 };

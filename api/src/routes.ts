@@ -9,8 +9,10 @@ const upload = multer( uploadConfig );
 
 routes.get('/picket', FarmsController.index );
 
-routes.post('/farms', async ( req, res ) => {
+routes.post('/farms', async( req, res ) => {
     await FarmsController.create( req, res );
 });
+
+routes.get('/farms/:id', FarmsController.show );
 
 export default routes;

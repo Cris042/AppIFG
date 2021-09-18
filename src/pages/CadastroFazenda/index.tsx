@@ -56,8 +56,10 @@ export default function Data() {
       alert( "Cadastro efetuado!!" );
       navigation.navigate("Home");
     }
+    else if ( resp.status == 400 )
+      alert("Ops!. Ocorreu um error na hora do cadastro, verifique se todos campos foram preencidos.");
     else
-      alert("Ops!. Ocorreu um error na hora do cadastro, verifique se todos campos foram preencidos e se não existe nem um pasto com mesmo nome.");
+      alert("Ops!. Ja existe um pasto com esse nome!")
   } 
 
   return (

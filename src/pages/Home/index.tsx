@@ -13,7 +13,7 @@ import { RectButton } from "react-native-gesture-handler";
 
 import api from "../../services/axios";
 
-interface Orphanage {
+interface Farms {
   id: number;
   name: string;
   latitude: number;
@@ -23,7 +23,7 @@ interface Orphanage {
 export default function Map() 
 {
     const navigation = useNavigation();
-    const [ farms , setFarms ] = useState<Orphanage[]>([]);
+    const [ farms , setFarms ] = useState<Farms[]>([]);
 
     const [initialPosition, setInitialPosition] = useState({
       latitude: -16.81508090497519,
@@ -75,14 +75,14 @@ export default function Map()
     });
 
   
+  function handleNavigatFarmDetails( id: number ) {
+      navigation.navigate("FazendaEdit", { id } );
+  }
+  
   function handleNavigateToCreateFarms() {
     navigation.navigate("SelectMapPosition", { initialPosition });
   }
-
-  // function handleNavigatFarmDetails() {
-  //   navigation.navigate("SelectMapPosition", { initialPosition });
-  // }
-
+  
   return (
     <View style={styles.container}>
       {initialPosition.latitude !== 0 && (
@@ -98,36 +98,36 @@ export default function Map()
             longitudeDelta: 0.014,
           }}
         >
-        { farms.map(( farm ) => 
-        {
-          return (
-            <Marker
-              key={ farm.id }
-              icon={mapMaker}
+          { farms.map(( farm ) => 
+          {
+            return (
+              <Marker
+                key={ farm.id }
+                icon={mapMaker}
 
-              calloutAnchor={{
-                x: 0.75,
-                y: -0.1,
-              }}
+                calloutAnchor={{
+                  x: 0.75,
+                  y: -0.1,
+                }}
 
-              coordinate={{
-                  latitude: farm.latitude,
-                  longitude: farm.longitude,
-              }}
-            >
-              <Callout
-                  tooltip
-                  // onPress={() => handleNavigatFarmDetails( farms.id)}
+                coordinate={{
+                    latitude: farm.latitude,
+                    longitude: farm.longitude,
+                }}
               >
-                  <View style={styles.calloutContainer}>
-                    <Text style={styles.calloutText}>{  farm.name }</Text>
-                  </View>
+                <Callout
+                    tooltip
+                    onPress={() => handleNavigatFarmDetails( farm.id )}
+                >
+                    <View style={styles.calloutContainer}>
+                      <Text style={styles.calloutText}>{  farm.name }</Text>
+                    </View>
 
-              </Callout>
-            </Marker>
-          );
+                </Callout>
+              </Marker>
+            );
 
-        })}
+          })}
 
         </MapView>
 

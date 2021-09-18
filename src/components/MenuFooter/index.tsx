@@ -12,6 +12,7 @@ import Login from '../../pages/Login';
 import CadastroFazenda from '../../pages/CadastroFazenda';
 import SelectMapPosition from '../../pages/SelectMapPosition';
 import MeusDados from '../../pages/AtualizarDados';
+import FazendaEdit from '../../pages/FazendaEdit';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -25,7 +26,7 @@ const Menu: React.FC = () => {
                     style: 
                     {
                         height: 60,
-                        width: 720,
+                        width: 820,
                         marginLeft: -95,
                         backgroundColor: colors.menu,
                         borderTopWidth: 0,
@@ -107,7 +108,7 @@ const Menu: React.FC = () => {
                 />
 
                 <Screen
-                    name="Meus Dados"
+                    name="MeusDados"
                     component={  MeusDados }
                     options={{
 
@@ -139,6 +140,17 @@ const Menu: React.FC = () => {
                 <Screen
                     name="CadastroFazenda"
                     component={ CadastroFazenda }
+                    options={{
+
+                        tabBarVisible:false,
+                        tabBarLabel: "",   
+
+                    }}
+                />
+
+                <Screen
+                    name="FazendaEdit"
+                    component={ FazendaEdit }
                     options={{
 
                         tabBarVisible:false,
