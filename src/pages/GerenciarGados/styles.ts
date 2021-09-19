@@ -1,22 +1,70 @@
-import styled from 'styled-components/native';
-import Constants from 'expo-constants';
-import { Platform } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import colors from '../../styles/colors';
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    width: '92%',
+    padding: '5%',
+    marginTop: '12%',
+    marginBottom: '5%',
+    marginLeft: '4%',
+    marginRight: '4%',
+    borderRadius: 20,
+    borderWidth: 1.9,
+    borderColor: "#DFDCDC",
+    backgroundColor: "#fff",
+  },
+  
+  card: {
+    width: '100%',
+    marginBottom: '5%',
+    borderRadius: 20,
+    borderWidth: 1.0,
+    borderColor: "#DFDCDC",
+    height: 200,
+  },
 
-const statusBarHeight =
-  Platform.OS === 'android' ? Constants.statusBarHeight : 0;
+  title: {
+    color: "#27b844",
+    fontSize: 24,
+    marginBottom: 32,
+    marginTop: 32,
+    textAlign: "center",
+    paddingBottom: 24,
+  },
 
-export const Wrapper = styled.SafeAreaView`
-  background: ${ colors.primary };
-  flex: 1;
-  padding-top: ${ statusBarHeight + 'px' };
+  iconCard: {
+    height: 160,
+    width: "20%",
+    marginTop: 20,
+    marginLeft: 10,
+    paddingTop: 50,
+    borderRightWidth: 1.2,
+    borderRightColor: "#222",
+  },
 
-  justify-content: center;
-  align-items: center;
-`;
+  cardBory: {
+    height: 140,
+    width: "70%",
+    marginTop: -140,
+    paddingTop: 20,
+    marginLeft: "30%",
+  },
 
-export const Heading = styled.Text`
-  color: ${ colors.fonte };
-  font-size: 30px;
-`;
+  textCard: {
+    textAlign: "center",
+    color: "#000",
+    marginRight: 30,
+    fontSize: 12,
+  },
+
+  btnCard: {
+    textAlign: "center",
+    color: "#27b844",
+    fontSize: 16,
+    marginTop: -15,
+    marginRight: -70,
+  },
+
+
+});

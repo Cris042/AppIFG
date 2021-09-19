@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Text, View } from "react-native";
+
 import MapView, { Callout,Marker,PROVIDER_GOOGLE } from "react-native-maps";
+import * as Progress from 'react-native-progress';
+
 import * as Location from "expo-location";
 import { Feather } from "@expo/vector-icons";
 
@@ -120,7 +123,11 @@ export default function Map()
                     onPress={() => handleNavigatFarmDetails( farm.id )}
                 >
                     <View style={styles.calloutContainer}>
-                      <Text style={styles.calloutText}>{  farm.name }</Text>
+                      <Text style={styles.calloutText}> Nome: {  farm.name }</Text>
+                      <Text style={styles.calloutText}> Capacidade: 20/25 </Text>
+                      <Text style={styles.calloutText}> Dias Úteis: 325/365 </Text>
+                      <Text style={styles.calloutText}> Utilização</Text>
+                      <Progress.Bar  progress={0.8} width={180} color="#3FC71D" /> 
                     </View>
 
                 </Callout>

@@ -12,8 +12,10 @@ export default StyleSheet.create({
   },
 
   calloutContainer: {
-    width: 160,
-    height: 46,
+    width: 200,
+    paddingLeft: 10,
+    paddingRight: 10,
+    height: 120,
     paddingHorizontal: 16,
     backgroundColor: "rgba(255, 255, 255, 0.8)",
     borderRadius: 16,
@@ -22,8 +24,10 @@ export default StyleSheet.create({
   },
 
   calloutText: {
-    color: "#0089a5",
+    color: "#000",
+    textAlign: "center",
     fontSize: 14,
+    marginBottom: 2,
   },
 
   footer: {

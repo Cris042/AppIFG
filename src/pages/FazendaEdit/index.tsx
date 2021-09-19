@@ -101,7 +101,7 @@ export default function FazendaEdit()
         <TextInput style={styles.input} value = { Farm.name } placeholder = "Nome do pasto ( Minimo 3 letras )"  />
 
         <Text style={styles.label}>Tamanho em hectares</Text>
-        <TextInput style={styles.input} value = { Farm.size }  keyboardType = "numeric"  placeholder = "Tamanho do pasto" />
+        <TextInput style={styles.input} value = "123"  keyboardType = "numeric"  placeholder = "Tamanho do pasto" />
 
         <Text style={styles.label}>Tipo</Text>
 

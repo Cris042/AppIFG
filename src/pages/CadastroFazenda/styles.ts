@@ -6,7 +6,7 @@ export default StyleSheet.create({
   },
 
   title: {
-    color: "#5c8599",
+    color: "#27b844",
     fontSize: 24,
     marginBottom: 32,
     marginTop: 32,
@@ -70,7 +70,7 @@ export default StyleSheet.create({
   },
 
   nextButton: {
-    backgroundColor: "#15c3d6",
+    backgroundColor: "#51EE49",
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",

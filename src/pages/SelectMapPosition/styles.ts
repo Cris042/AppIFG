@@ -12,7 +12,7 @@ export default StyleSheet.create({
   },
 
   nextButton: {
-    backgroundColor: "#15c3d6",
+    backgroundColor: "#27b844",
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
