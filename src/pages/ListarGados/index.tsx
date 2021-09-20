@@ -16,6 +16,14 @@ import styles from "./styles";
 
 const CatleList: React.FC = () => {
 
+    const navigation = useNavigation();
+
+    function handleNavigatCattleList()
+    {
+        navigation.navigate("CadastarGados");
+    }
+
+
     return (
         <View style = { styles.container } >
     
@@ -35,83 +43,19 @@ const CatleList: React.FC = () => {
                         <Text style = { styles.textCard }> Nome : Pirulito </Text>    
                     </View>
 
-                    <Text style = { styles.btnCard }> Editar Gado </Text>   
-                </View>
-
-                <View style = { styles.card } >
-                    <View style = { styles.iconCard }>
-                        <MaterialCommunityIcons name = "cow" size={50} color="#000" /> 
-                    </View>
-
-                    <View style = { styles.cardBory }>
-                        <Text style = { styles.textCard }> Peso : 300 KG </Text> 
-                        <Text style = { styles.textCard }> Idade : 10 Anos </Text>                 
-                        <Text style = { styles.textCard }> Pasto ocupado: teste </Text> 
-                        <Text style = { styles.textCard }> Raça : Nelore </Text>
-                        <Text style = { styles.textCard }> Nome : Pirulito </Text>    
-                    </View>
-
-                    <Text style = { styles.btnCard }> Editar Gado </Text>   
-                </View> 
-
-                <View style = { styles.card } >
-                    <View style = { styles.iconCard }>
-                        <MaterialCommunityIcons name = "cow" size={50} color="#000" /> 
-                    </View>
-
-                    <View style = { styles.cardBory }>
-                        <Text style = { styles.textCard }> Peso : 300 KG </Text> 
-                        <Text style = { styles.textCard }> Idade : 10 Anos </Text>                 
-                        <Text style = { styles.textCard }> Pasto ocupado: teste </Text> 
-                        <Text style = { styles.textCard }> Raça : Nelore </Text>   
-                        <Text style = { styles.textCard }> Nome : Pirulito </Text> 
-                    </View>
-
-                    <Text style = { styles.btnCard }> Editar Gado </Text>   
-                </View>   
-
-                 <View style = { styles.card } >
-                    <View style = { styles.iconCard }>
-                        <MaterialCommunityIcons name = "cow" size={50} color="#000" /> 
-                    </View>
-
-                    <View style = { styles.cardBory }>
-                        <Text style = { styles.textCard }> Peso : 300 KG </Text> 
-                        <Text style = { styles.textCard }> Idade : 10 Anos </Text>                 
-                        <Text style = { styles.textCard }> Pasto ocupado: teste </Text> 
-                        <Text style = { styles.textCard }> Raça : Nelore </Text>
-                        <Text style = { styles.textCard }> Nome : Pirulito </Text>    
-                    </View>
-
-                    <Text style = { styles.btnCard }> Editar Gado </Text>   
-                </View>      
-
-                 <View style = { styles.card } >
-                    <View style = { styles.iconCard }>
-                        <MaterialCommunityIcons name = "cow" size={50} color="#000" /> 
-                    </View>
-
-                    <View style = { styles.cardBory }>
-                        <Text style = { styles.textCard }> Peso : 300 KG </Text> 
-                        <Text style = { styles.textCard }> Idade : 10 Anos </Text>                 
-                        <Text style = { styles.textCard }> Pasto ocupado: teste </Text> 
-                        <Text style = { styles.textCard }> Raça : Nelore </Text>    
-                        <Text style = { styles.textCard }> Nome : Pirulito </Text>
-                    </View>
-
-                    <Text style = { styles.btnCard }> Editar Gado </Text>   
-                </View>      
-                               
+                    <Text style = { styles.btnCard }  > Editar Gado </Text>   
+                </View>                     
             </ScrollView>
 
             <View style={styles.footer}>
 
                 <Text style={styles.footerText}>
-                   10 Gados(s) encontrado(s)
+                   1 Gados(s) encontrado(s)
                 </Text>
 
                 <RectButton
-                    style={styles.addButton}
+                    style = {styles.addButton}
+                    onPress = { handleNavigatCattleList }
                 >
                     <Feather name="plus" size={20} color="#fff" />
 

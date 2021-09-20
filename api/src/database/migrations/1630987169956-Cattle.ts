@@ -30,6 +30,11 @@ export class Cattle1630987169956 implements MigrationInterface {
                 },
 
                 {
+                    name: 'status',
+                    type: 'boolean',
+                },
+
+                {
                     name: 'initialWeight',
                     type: 'integer',
                     isNullable : true,
@@ -42,22 +47,11 @@ export class Cattle1630987169956 implements MigrationInterface {
                 },
 
                 {
-                    name: 'node',
-                    type: 'text',
-                    isNullable : true,
-                },
-
-                {
                     name: 'purchaseValue',
                     type: 'integer',
                     isNullable : true,
                 },
 
-                {
-                    name: 'dailyConsumption',
-                    type: 'integer',
-                    isNullable : true,
-                },
 
                 {
                     name: 'datePurchase',

@@ -13,24 +13,25 @@ export default StyleSheet.create({
   },
 
   title: {
+    width: "60%",
+    marginLeft: "18%",
+    marginRight: '18%',
     color: "#27b844",
     fontSize: 24,
-    marginBottom: 15,
-    marginTop: 18,
-    marginLeft: "17%",
-    marginRight: "17%",
+    marginTop: 35,
+    marginBottom: 40,
     textAlign: "center",
-    paddingBottom: 24,
-    borderBottomWidth: 1.2,
-    borderBottomColor: "#222",
+    paddingBottom: 22,
+    borderBottomWidth: 1.5,
+    borderBottomColor: "#C0B8B8",
   },
 
   scroll: {
     marginBottom: "20%",
     padding: "10%",
     borderRadius: 20,
-    borderWidth: 0.7,
-    borderColor: "#ccc",
+    borderWidth: 1,
+    borderColor: "#C0B8B8",
    
   },
   
@@ -39,7 +40,8 @@ export default StyleSheet.create({
     marginBottom: '5%',
     borderRadius: 20,
     borderWidth: 1.0,
-    borderColor: "#DFDCDC",
+    borderColor: "#222",
+    backgroundColor: "#FFFFFF",
     height: 160,
   },
 
@@ -86,11 +88,9 @@ export default StyleSheet.create({
     borderRadius: 20,
     height: 56,
     paddingLeft: 24,
-
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-
     elevation: 3,
   },
 

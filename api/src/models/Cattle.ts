@@ -19,20 +19,17 @@
       name: string;   
 
       @Column()
+      status: boolean;    
+
+      @Column()
       initialWeight: number;  
 
       @Column()
       Weight: number; 
 
       @Column()
-      note: string;  
-
-      @Column()
       purchaseValue: number; 
       
-      @Column()
-      dailyConsumption: number;  
-
       @Column()
       datePurchase: Date;
 
