@@ -27,6 +27,11 @@ const ChamanageCattle: React.FC = () => {
   {
     navigation.navigate("ListarGados");
   }
+
+  function handleNavigaPiquetList()
+  {
+    navigation.navigate("ListarPastos");
+  }
   
 
   return ( 
@@ -59,7 +64,7 @@ const ChamanageCattle: React.FC = () => {
                 <Text style = { styles.textCard }> Quantidade de Pasto: 50 </Text> 
             </View>
                 
-            <Text style = { styles.btnCard } onPress={ handleNavigatCattleList }> Gerenciar Pasto </Text>   
+            <Text style = { styles.btnCard } onPress={ handleNavigaPiquetList }> Gerenciar Pasto </Text>   
         </View>     
 
       </View>    

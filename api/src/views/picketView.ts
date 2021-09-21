@@ -15,7 +15,8 @@ export default {
     };
   },
 
-  renderMany( picket: Picket[] ) {
+  renderMany( picket: Picket[] ) 
+  {
     return  picket.map(( picket ) => this.render(  picket ));
   },
 };

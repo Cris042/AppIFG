@@ -19,6 +19,8 @@ import api from "../../services/axios";
 interface Farms {
   id: number;
   name: string;
+  size: number;
+  countFood: number;
   latitude: number;
   longitude: number;
 }
@@ -78,11 +80,13 @@ export default function Map()
     });
 
   
-  function handleNavigatFarmDetails( id: number ) {
+  function handleNavigatFarmDetails( id: number ) 
+  {
       navigation.navigate("FazendaEdit", { id } );
   }
   
-  function handleNavigateToCreateFarms() {
+  function handleNavigateToCreateFarms() 
+  {
     navigation.navigate("SelectMapPosition", { initialPosition });
   }
   
@@ -123,11 +127,10 @@ export default function Map()
                     onPress={() => handleNavigatFarmDetails( farm.id )}
                 >
                     <View style={styles.calloutContainer}>
-                      <Text style={styles.calloutText}> Nome: {  farm.name }</Text>
-                      <Text style={styles.calloutText}> Capacidade: 20/25 </Text>
+                      <Text style={styles.calloutText}> Nome: { farm.name }</Text>
                       <Text style={styles.calloutText}> Dias Úteis: 325/365 </Text>
-                      <Text style={styles.calloutText}> Utilização</Text>
-                      <Progress.Bar  progress={0.8} width={180} color="#3FC71D" /> 
+                      <Text style={styles.calloutText}> Capacidade de gados: 10/20 </Text>
+                      <Progress.Bar  progress={0.5} width={180} color="#3FC71D" /> 
                     </View>
 
                 </Callout>

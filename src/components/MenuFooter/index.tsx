@@ -14,6 +14,7 @@ import SelectMapPosition from '../../pages/SelectMapPosition';
 import MeusDados from '../../pages/AtualizarDados';
 import FazendaEdit from '../../pages/FazendaEdit';
 import ListarGados from '../../pages/ListarGados';
+import ListarPastos from '../../pages/ListarPastos';
 import CadastarGados from '../../pages/CadastroGados';
 
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -28,7 +29,7 @@ const Menu: React.FC = () => {
                     style: 
                     {
                         height: 60,
-                        width: 1060,
+                        width: 1150,
                         marginLeft: -95,
                         backgroundColor: colors.menu,
                         borderTopWidth: 0,
@@ -181,7 +182,18 @@ const Menu: React.FC = () => {
                         tabBarLabel: "",   
 
                     }}
-                />      
+                /> 
+
+                <Screen
+                    name="ListarPastos"
+                    component={ ListarPastos }
+                    options={{
+
+                        tabBarVisible:false,
+                        tabBarLabel: "",   
+
+                    }}
+                />          
 
             </Navigator>
         </NavigationContainer>

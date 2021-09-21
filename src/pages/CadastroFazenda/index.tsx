@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ScrollView,
   Text,
@@ -24,6 +24,13 @@ interface DataRouteParams
   };
 }
 
+interface Types 
+{
+  id: number;
+  name: string;
+  amountOffood: number;
+}
+
 export default function Data() {
   const navigation = useNavigation();
   const route = useRoute();
@@ -31,18 +38,35 @@ export default function Data() {
 
   const [ name, setName ] = useState("");
   const [ size, setSize ] = useState("");
-  const [ type, setType ] = useState("Java");
+  const [ type, setType ] = useState("");
+  const [ types, setTypes ] = useState<Types[]>([]);
   const [ status, setStatus ] = useState( true );
+
  
+  useEffect(() => 
+  {
+    async function load() 
+    {
+      const response = await api.get("types");
+
+      setTypes( response.data );
+    }
+
+    load();
+
+  }, []);
 
   async function handleCreate() 
   {
     const { latitude, longitude } = params.position;
 
+    const typeID =  types.find( types => types.name === type );
+    const amountOffood = typeID?.amountOffood;
+  
     const data = new FormData();
 
     data.append("name", name );
-    data.append("countFood", String( 0 ) );
+    data.append("countFood", String( amountOffood ) );
     data.append("type", String( type ) );
     data.append("size", String( size ) );
     data.append("latitude", String( latitude ) );
@@ -59,7 +83,7 @@ export default function Data() {
     else if ( resp.status == 400 )
       alert("Ops!. Ocorreu um error na hora do cadastro, verifique se todos campos foram preencidos.");
     else
-      alert("Ops!. Ja existe um pasto com esse nome!")
+      alert("Ops!. Ja existe um pasto com esse nome!");
   } 
 
   return (
@@ -83,9 +107,13 @@ export default function Data() {
           setType( itemValue )
         }>
 
-        <Picker.Item  label="Java" value="java" />
-        <Picker.Item  label="JavaScript" value="js" />
-
+        { types.map(( type ) => 
+        {
+            return (
+              <Picker.Item key = { type.id } label = { type.name } value = { type.name } />
+            );
+        })}
+       
       </Picker>
 
       <View style={styles.switchContainer}>

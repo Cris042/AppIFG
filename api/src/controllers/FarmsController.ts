@@ -4,17 +4,25 @@ import * as Yup from 'yup';
 
 import picket from '../models/Picket';
 import picketView from '../views/picketView';
+import PastureType from '../models/PastureType';
+import PastureTypeView from '../views/PastureTypeView';
 
 export default {
 
   async index( req: Request, res: Response ) 
   {
       const farmsRepository = getRepository( picket );
-      const farms = await farmsRepository.find({ 
-        
-      });
+      const farms = await farmsRepository.find({ });
 
       return res.json( picketView.renderMany( farms ) );
+  },
+
+  async listType( req: Request, res: Response ) 
+  {
+      const Type = getRepository( PastureType );
+      const types = await Type.find({ });
+
+      return res.json( PastureTypeView.renderMany( types ) );
   },
 
   async show( req: Request, res: Response)

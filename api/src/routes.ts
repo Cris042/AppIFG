@@ -10,6 +10,10 @@ const upload = multer( uploadConfig );
 
 routes.get('/picket', FarmsController.index );
 
+routes.get('/types', FarmsController.listType );
+
+routes.get('/cattle', CatteController.index );
+
 routes.post('/farms', async( req, res ) => {
     await FarmsController.create( req, res );
 });
