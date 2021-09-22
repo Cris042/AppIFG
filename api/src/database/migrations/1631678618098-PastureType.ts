@@ -26,7 +26,7 @@ export class PastureType1631678618098 implements MigrationInterface {
 
                 {
                     name: 'amountOffood',
-                    type: 'varchar',
+                    type: 'number',
                 }
 
               ],

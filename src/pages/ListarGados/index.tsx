@@ -34,14 +34,14 @@ const CatleList: React.FC = () => {
     useEffect(() => 
     {
 
-      async function loadOrphanages() 
+      async function load() 
       {
         const response = await api.get("cattle");
   
         setCattle( response.data );
       }
   
-      loadOrphanages();
+      load();
 
     });
 

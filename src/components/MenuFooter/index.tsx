@@ -29,7 +29,7 @@ const Menu: React.FC = () => {
                     style: 
                     {
                         height: 60,
-                        width: 1150,
+                        width: 1180,
                         marginLeft: -95,
                         backgroundColor: colors.menu,
                         borderTopWidth: 0,

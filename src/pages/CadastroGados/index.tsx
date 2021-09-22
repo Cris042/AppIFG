@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ScrollView,
   Text,
@@ -10,11 +10,17 @@ import {
 import { RectButton } from "react-native-gesture-handler";
 import { Picker } from '@react-native-picker/picker';
 import { useNavigation, useRoute } from "@react-navigation/native";
-import DatePicker from 'react-native-datepicker';
+import { TextInputMask } from 'react-native-masked-text';
 
 import styles from "./styles";
 import api from "../../services/axios";
 
+interface Breed
+{
+  id: number;
+  name: string;
+  consumption: number;
+}
 
 export default function Data() {
   const navigation = useNavigation();
@@ -25,22 +31,36 @@ export default function Data() {
   const [ status, setStatus ] = useState( true );
   const [ peso, setPeso ] = useState("");
   const [ purchaseValue, setPurchaseValue ] = useState("");
-  const [ datePurchase, setDatePurchase ] = useState( new Date() );
+  const [ datePurchase, setDatePurchase ] = useState("");
   const [ idade, setIdade ] = useState("");
+  const [ breeds, setBreeds ] = useState<Breed[]>([]);
+
+  useEffect(() => 
+  {
+    async function load() 
+    {
+      const response = await api.get("breed");
+
+      setBreeds( response.data );
+    }
+
+    load();
+
+  }, []);
  
 
   async function handleCreate() 
   {
-    
+
     const data = new FormData();
 
-    data.append("name", name );
+    data.append("name", String( name === "" ? breed +  Math.floor( Math.random() * 10000 + 1000 ) : name ) );
     data.append("breed", String( breed ) );
     data.append("status",  String( status ) );
     data.append("initialWeight", String( peso ));
     data.append("peso", String( peso ) );
-    data.append("purchaseValue",  String( purchaseValue ) );
-    data.append("datePurchase", String( datePurchase ) );
+    data.append("purchaseValue",  String( purchaseValue === "" ? "0" : purchaseValue ) );
+    data.append("datePurchase", String( datePurchase === "" ? idade : datePurchase ) );
     data.append("idade",  String( idade ) );
 
     const resp = await api.post("cattle", { data } );
@@ -48,12 +68,11 @@ export default function Data() {
     if( resp.status == 201 )
     {
       alert( "Cadastro efetuado!!" );
-      navigation.navigate("CadastroGado");
+      navigation.navigate("ListarGados");
     }
-    else if ( resp.status == 400 )
-      alert("Ops!. Ocorreu um error na hora do cadastro, verifique se todos campos foram preencidos.");
     else
-      alert("Ops!. Ja existe um pasto com esse nome!")
+      alert("Ops!. Ocorreu um error na hora do cadastro, verifique se todos campos foram preencidos.");
+   
   } 
 
   return (
@@ -71,33 +90,48 @@ export default function Data() {
          onChangeText = { setName } 
        />
 
-      <Text style={styles.label}> Peso em kilos( Não e obrigatorio ) </Text>
+      <Text style={styles.label}> Peso em kilos </Text>
       
       <TextInput 
          style={styles.input} value = { peso }  
          placeholder = "peso" 
+         keyboardType = "numeric"
          onChangeText = { setPeso } 
        /> 
 
-      <Text style={styles.label}> Idade em meses ( Não e obrigatorio ) </Text>
+      <Text style={styles.label}> Data de Nacimento </Text>
       
-      <TextInput 
-         style={styles.input} value = { idade }  
-         placeholder = "idade" 
-         onChangeText = { setIdade } 
-       /> 
+      <TextInputMask
+         type={'datetime'}
+         options = {{
+          format: 'DD/MM/YYYY'
+         }}
+         style={ styles.input }
+         value={ idade }
+         onChangeText = { setIdade }
+      />
+
 
       <Text style={styles.label}> Valor da compra ( Não e obrigatorio ) </Text>
       
       <TextInput 
          style={styles.input} value = { purchaseValue }  
-         placeholder = "Valor pago" 
+         placeholder = "Valor da compra" 
          onChangeText = { setPurchaseValue } 
        /> 
 
       <Text style={styles.label}> Data da compra ( Não e obrigatorio ) </Text>
       
-      <DatePicker date = { datePurchase } onDateChange={ ( date ) => {setDatePurchase } } /> 
+      <TextInputMask
+         type={'datetime'}
+         options = {{
+          format: 'DD/MM/YYYY'
+         }}
+         style={ styles.input }
+         value={ datePurchase }
+         onChangeText = { setDatePurchase }
+      />
+
 
       <Text style={styles.label}>Raça</Text>
 
@@ -107,8 +141,12 @@ export default function Data() {
           setBreed( itemValue )
         }>
 
-        <Picker.Item  label="Java" value="java" />
-        <Picker.Item  label="JavaScript" value="js" />
+        { breeds.map(( breed ) => 
+        {
+            return (
+              <Picker.Item key = { breed.id } label = { breed.name } value = { breed.name } />
+            );
+        })}
 
       </Picker>
 

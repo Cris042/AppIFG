@@ -31,9 +31,9 @@
       purchaseValue: number; 
       
       @Column()
-      datePurchase: Date;
+      datePurchase: String; 
 
       @Column()
-      dateOfBirth: Date;
+      dateOfBirth: String;
 
   }

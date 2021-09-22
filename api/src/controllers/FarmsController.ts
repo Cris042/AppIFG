@@ -67,7 +67,7 @@ export default {
       }
       catch (err) 
       {
-         return res.status(400);
+         return res.send();
       }
 
       const farms = farmsRepository.create({
@@ -83,11 +83,11 @@ export default {
       try 
       {
          await farmsRepository.save( farms );
-         return res.status(201);
+         return res.status(201).send();
       } 
       catch (err) 
       {
-         return res.status(401);
+         return res.send();
       }
       
       

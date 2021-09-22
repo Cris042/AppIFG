@@ -26,7 +26,7 @@ export class Breed1630987149129 implements MigrationInterface {
 
                 {
                     name: 'consumption',
-                    type: 'varchar',
+                    type: 'number',
                 }
 
               ],

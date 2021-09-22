@@ -22,6 +22,8 @@ routes.post('/cattle', async( req, res ) => {
     await CatteController.create( req, res );
 });
 
+routes.get('/breed', CatteController.listBreed);
+
 routes.get('/farms/:id', FarmsController.show );
 
 export default routes;

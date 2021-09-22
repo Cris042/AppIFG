@@ -80,10 +80,9 @@ export default function Data() {
       alert( "Cadastro efetuado!!" );
       navigation.navigate("Home");
     }
-    else if ( resp.status == 400 )
+    else 
       alert("Ops!. Ocorreu um error na hora do cadastro, verifique se todos campos foram preencidos.");
-    else
-      alert("Ops!. Ja existe um pasto com esse nome!");
+   
   } 
 
   return (

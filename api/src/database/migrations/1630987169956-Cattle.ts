@@ -55,12 +55,12 @@ export class Cattle1630987169956 implements MigrationInterface {
 
                 {
                     name: 'datePurchase',
-                    type: 'date',               
+                    type: 'varchar',               
                 },
 
                 {
                     name: 'dateOfBirth',
-                    type: 'date',
+                    type: 'varchar',
                 },
                 
               ],

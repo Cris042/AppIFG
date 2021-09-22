@@ -20,3 +20,7 @@
 
 1. Run `npm install` or `yarn install`.<br />
 2. Run `expo start`.<br />
+
+## Inicializar banco de dados
+
+1. Run `typeorm migration:run` <br />
