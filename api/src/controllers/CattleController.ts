@@ -46,18 +46,19 @@ export default {
       sexo = req.body.data._parts[8][1],
       node = req.body.data._parts[9][1],
       brinco = req.body.data._parts[10][1],
-      matriz = req.body.data._parts[11][1];
+      matriz = req.body.data._parts[11][1],
+      count = req.body.data._parts[12][1];
 
       const schema = Yup.object().shape({
-         name: Yup.string().required().min(3),
+         name: Yup.string().required(),
          sexo: Yup.string().required(),
-         node: Yup.string().required(),
-         brinco: Yup.number().required(),
+         node: Yup.string().notRequired(),
+         brinco: Yup.number().notRequired(),
          matriz: Yup.number().required(),
          breed: Yup.string().required(),
          status: Yup.string().required(),
          initialWeight: Yup.number().required(),
-         Weight: Yup.number().required(),
+         Weight: Yup.number().positive().required(),
          purchaseValue: Yup.number().required(),  
          dateOfBirth: Yup.string().required(),
          datePurchase: Yup.string().required(),
@@ -93,8 +94,38 @@ export default {
       
       try 
       {
-         await cattleRepository.save( cattle );
-         return res.status(201).send();
+         if( count == "")
+         {
+            await cattleRepository.save( cattle );
+            return res.status(201).send();
+         }
+         else
+         {
+
+            for( var i = 0; i < count; i++ )
+            {
+            
+               const cattle = cattleRepository.create({
+                  breed, 
+                  name : breed  + Math.floor( Math.random() * 10000 + 1000 ) ,
+                  sexo,
+                  node,
+                  matriz,
+                  brinco : -1,
+                  status, 
+                  initialWeight, 
+                  Weight, 
+                  purchaseValue, 
+                  dateOfBirth, 
+                  datePurchase
+               });
+
+               await cattleRepository.save( cattle );
+            }
+
+            return res.status(201).send();
+
+         }
       } 
       catch (err) 
       {

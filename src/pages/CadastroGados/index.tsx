@@ -31,13 +31,21 @@ interface Farms
   longitude: number;
 }
 
+interface Cattle
+{
+  id: number;
+  name: string;
+  breed: string; 
+  status: boolean;
+  initialWeight: number; 
+  Weight: number;  
+  dateOfBirth: Date;  
+}
+
 export default function Data() {
   const navigation = useNavigation();
   const route = useRoute();
 
-  // arrumar o erro das listagem dos pikets
-  // listar os gados para matriz
-  // adicionar a funcioalidade de cadastro de multiplos gados
   // cadastro o piketUsed
   // gerar a quantidade estimada da capacidade de gados
   // gerar a quantidade estimada da forragem do piket
@@ -45,17 +53,20 @@ export default function Data() {
   const [ name, setName ] = useState("");
   const [ count, setCount ] = useState("");
   const [ breed, setBreed ] = useState("");
-  const [ status, setStatus ] = useState("");
+  const [ status, setStatus ] = useState("a");
   const [ peso, setPeso ] = useState("");
   const [ purchaseValue, setPurchaseValue ] = useState("");
   const [ datePurchase, setDatePurchase ] = useState("");
   const [ idade, setIdade ] = useState("");
   const [ sexo, setSexo ] = useState("m");
   const [ node, setNode ] = useState("");
-  const [ matriz, setMatriz ] = useState("");
+  const [ matriz, setMatriz ] = useState("-1");
   const [ brinco, setBrinco ] = useState("");
+  const[  farm , setFarm ] = useState("-1");
+
   const [ breeds, setBreeds ] = useState<Breed[]>([]);
   const [ farms , setFarms ] = useState<Farms[]>([]);
+  const [ cattle , setCattle ] = useState<Cattle[]>([]);
 
 
   useEffect(() => 
@@ -85,11 +96,26 @@ export default function Data() {
 
   }, []);
 
+  useEffect(() => 
+  {
+
+    async function loadCattle() 
+    {
+      const response = await api.get("cattle");
+
+      setCattle( response.data );
+    }
+
+    loadCattle();
+
+  }, []);
+
  
 
   async function handleCreate() 
   {
 
+  
     const data = new FormData();
 
     data.append("name", String( name === "" ? breed +  Math.floor( Math.random() * 10000 + 1000 ) : name ) );
@@ -101,9 +127,10 @@ export default function Data() {
     data.append("datePurchase", String( datePurchase === "" ? idade : datePurchase ) );
     data.append("idade",  String( idade ) );
     data.append("sexo", String( sexo ) );
-    data.append("node", String( node ) );
-    data.append("brinco", String( brinco ) );
-    data.append("matriz", String( "1" ) );
+    data.append("node", String( node === "" ? "null" : node ) );
+    data.append("brinco", String( brinco === "" ? "-1" : brinco ) );
+    data.append("matriz", String( matriz ) );
+    data.append("count", String( count ) );
 
     const resp = await api.post("cattle", { data } );
 
@@ -113,8 +140,8 @@ export default function Data() {
       navigation.navigate("ListarGados");
     }
     else
-      alert("Ops!. Ocorreu um error na hora do cadastro, verifique se todos campos foram preencidos.");
-   
+      alert("Ops! Ocorreu um error na hora do cadastro, verifique se todos campos foram preencidos.");
+  
   } 
 
   return (
@@ -197,21 +224,39 @@ export default function Data() {
       <Text style={styles.label}>Pasto ( Opcional ) </Text>
 
       <Picker mode = "dropdown"  style={styles.picker}
-        selectedValue = { farms }
+        selectedValue = { farm }
         onValueChange={ ( itemValue, itemIndex ) =>
-          setFarms( itemValue )
+          setFarm( itemValue )
         }>
 
-        {/* { farms.map(( farm ) => 
-        {
-            return (
-              <Picker.Item key = { farm.id } label = { farm.name } value = { farm.id } />
-            );
-        })} */}
+          <Picker.Item label = "Escolhar uma Pasto" value = "-1" />
+          { farms.map(( farm ) => 
+          {
+              return (
+                <Picker.Item key = { farm.id } label = { farm.name } value = { farm.id } />
+              );
+          })}
         
 
       </Picker>
 
+      <Text style={styles.label}> Matriz ( Opcional ) </Text>
+
+      <Picker mode = "dropdown"  style={styles.picker}
+        selectedValue = { matriz }
+        onValueChange={ ( itemValue, itemIndex ) =>
+          setMatriz( itemValue )
+        }>
+
+          <Picker.Item label = "Escolhar uma Matriz" value = "-1" />
+          {  cattle.map(( cattle ) => 
+          {
+              return (
+                <Picker.Item key = { cattle.id } label = { cattle.name } value = { cattle.id } />
+              );
+          })}
+          
+      </Picker>
      
       <Text style={styles.label}>Raça</Text>
 

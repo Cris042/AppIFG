@@ -37,6 +37,7 @@ export class Cattle1630987169956 implements MigrationInterface {
                 {
                     name: 'node',
                     type: 'text',
+                    isNullable : true,
                 },
 
                 {
@@ -48,6 +49,7 @@ export class Cattle1630987169956 implements MigrationInterface {
                 {
                     name: 'brinco',
                     type: 'integer',
+                    isUnique: true,
                     isNullable : true,
                 },
 
@@ -65,7 +67,6 @@ export class Cattle1630987169956 implements MigrationInterface {
                 {
                     name: 'weight',
                     type: 'integer',
-                    isNullable : true,
                 },
 
                 {
