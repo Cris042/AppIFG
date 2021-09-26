@@ -68,14 +68,14 @@ export default function Map()
     useFocusEffect(() => 
     {
 
-      async function loadOrphanages() 
+      async function load() 
       {
         const response = await api.get("picket");
   
         setFarms( response.data );
       }
   
-      loadOrphanages();
+      load();
 
     });
 
@@ -128,8 +128,8 @@ export default function Map()
                 >
                     <View style={styles.calloutContainer}>
                       <Text style={styles.calloutText}> Nome: { farm.name }</Text>
-                      <Text style={styles.calloutText}> Dias Úteis: 325/365 </Text>
-                      <Text style={styles.calloutText}> Capacidade de gados: 10/20 </Text>
+                      <Text style={styles.calloutText}> Cabeçãs de gados: 10/20 </Text>
+                      <Text style={styles.calloutText}> Quantiade de Forragem</Text>
                       <Progress.Bar  progress={0.5} width={180} color="#3FC71D" /> 
                     </View>
 

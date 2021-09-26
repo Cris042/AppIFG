@@ -19,7 +19,19 @@
       name: string;   
 
       @Column()
-      status: boolean;    
+      sexo: string; 
+
+      @Column()
+      node: string; 
+
+      @Column()
+      matriz: number; 
+      
+      @Column()
+      brinco: number;  
+
+      @Column()
+      status: string;    
 
       @Column()
       initialWeight: number;  

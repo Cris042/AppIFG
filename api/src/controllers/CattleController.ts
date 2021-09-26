@@ -42,23 +42,32 @@ export default {
       Weight = req.body.data._parts[4][1],
       purchaseValue = req.body.data._parts[5][1],
       datePurchase = req.body.data._parts[6][1],
-      dateOfBirth = req.body.data._parts[7][1];
+      dateOfBirth = req.body.data._parts[7][1],
+      sexo = req.body.data._parts[8][1],
+      node = req.body.data._parts[9][1],
+      brinco = req.body.data._parts[10][1],
+      matriz = req.body.data._parts[11][1];
 
       const schema = Yup.object().shape({
          name: Yup.string().required().min(3),
+         sexo: Yup.string().required(),
+         node: Yup.string().required(),
+         brinco: Yup.number().required(),
+         matriz: Yup.number().required(),
          breed: Yup.string().required(),
-         status: Yup.boolean().required(),
+         status: Yup.string().required(),
          initialWeight: Yup.number().required(),
          Weight: Yup.number().required(),
          purchaseValue: Yup.number().required(),  
          dateOfBirth: Yup.string().required(),
          datePurchase: Yup.string().required(),
+       
       });
     
       try 
       {
         await schema.validate(
-          { name, breed, status, initialWeight, Weight, purchaseValue, dateOfBirth, datePurchase },
+          { name, sexo, node, matriz, brinco, breed, status, initialWeight, Weight, purchaseValue, dateOfBirth, datePurchase },
           { abortEarly: false }
         );
       }
@@ -70,6 +79,10 @@ export default {
       const cattle = cattleRepository.create({
          breed, 
          name, 
+         sexo,
+         node,
+         matriz,
+         brinco,
          status, 
          initialWeight, 
          Weight, 
@@ -77,9 +90,7 @@ export default {
          dateOfBirth, 
          datePurchase
       });
-
-      console.log( Weight );
-
+      
       try 
       {
          await cattleRepository.save( cattle );

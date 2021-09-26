@@ -28,7 +28,9 @@ export default StyleSheet.create({
 
   scroll: {
     marginBottom: "20%",
-    padding: "10%",
+    paddingLeft: "10%",
+    paddingRight: "10%",
+    paddingTop: "2%",
     borderRadius: 20,
     borderWidth: 1,
     borderColor: "#C0B8B8",
@@ -42,15 +44,15 @@ export default StyleSheet.create({
     borderWidth: 1.0,
     borderColor: "#222",
     backgroundColor: "#FFFFFF",
-    height: 160,
+    height: 150,
   },
 
   iconCard: {
-    height: 120,
+    height: 110,
     width: "20%",
-    marginTop: 20,
+    marginTop: 22.5,
     marginLeft: 3,
-    paddingTop: 35,
+    paddingTop: 30,
     borderRightWidth: 1.2,
     borderRightColor: "#222",
   },
@@ -74,7 +76,7 @@ export default StyleSheet.create({
     textAlign: "center",
     color: "#27b844",
     fontSize: 16,
-    marginTop: -35,
+    marginTop: -40,
     marginRight: -50,
   },
 

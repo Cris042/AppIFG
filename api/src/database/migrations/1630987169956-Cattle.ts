@@ -30,8 +30,30 @@ export class Cattle1630987169956 implements MigrationInterface {
                 },
 
                 {
+                    name: 'sexo',
+                    type: 'varchar',
+                },
+
+                {
+                    name: 'node',
+                    type: 'text',
+                },
+
+                {
+                    name: 'matriz',
+                    type: 'integer',
+                    isNullable : true,
+                },
+
+                {
+                    name: 'brinco',
+                    type: 'integer',
+                    isNullable : true,
+                },
+
+                {
                     name: 'status',
-                    type: 'boolean',
+                    type: 'varchar',
                 },
 
                 {

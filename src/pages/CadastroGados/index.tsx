@@ -21,19 +21,42 @@ interface Breed
   name: string;
   consumption: number;
 }
+interface Farms 
+{
+  id: number;
+  name: string;
+  size: number;
+  countFood: number;
+  latitude: number;
+  longitude: number;
+}
 
 export default function Data() {
   const navigation = useNavigation();
   const route = useRoute();
 
+  // arrumar o erro das listagem dos pikets
+  // listar os gados para matriz
+  // adicionar a funcioalidade de cadastro de multiplos gados
+  // cadastro o piketUsed
+  // gerar a quantidade estimada da capacidade de gados
+  // gerar a quantidade estimada da forragem do piket
+
   const [ name, setName ] = useState("");
-  const [ breed, setBreed ] = useState("Java");
-  const [ status, setStatus ] = useState( true );
+  const [ count, setCount ] = useState("");
+  const [ breed, setBreed ] = useState("");
+  const [ status, setStatus ] = useState("");
   const [ peso, setPeso ] = useState("");
   const [ purchaseValue, setPurchaseValue ] = useState("");
   const [ datePurchase, setDatePurchase ] = useState("");
   const [ idade, setIdade ] = useState("");
+  const [ sexo, setSexo ] = useState("m");
+  const [ node, setNode ] = useState("");
+  const [ matriz, setMatriz ] = useState("");
+  const [ brinco, setBrinco ] = useState("");
   const [ breeds, setBreeds ] = useState<Breed[]>([]);
+  const [ farms , setFarms ] = useState<Farms[]>([]);
+
 
   useEffect(() => 
   {
@@ -47,6 +70,21 @@ export default function Data() {
     load();
 
   }, []);
+
+  useEffect(() => 
+  {
+
+    async function loadPiket() 
+    {
+      const response = await api.get("picket");
+
+      setFarms( response.data );
+    }
+
+    loadPiket();
+
+  }, []);
+
  
 
   async function handleCreate() 
@@ -62,6 +100,10 @@ export default function Data() {
     data.append("purchaseValue",  String( purchaseValue === "" ? "0" : purchaseValue ) );
     data.append("datePurchase", String( datePurchase === "" ? idade : datePurchase ) );
     data.append("idade",  String( idade ) );
+    data.append("sexo", String( sexo ) );
+    data.append("node", String( node ) );
+    data.append("brinco", String( brinco ) );
+    data.append("matriz", String( "1" ) );
 
     const resp = await api.post("cattle", { data } );
 
@@ -86,15 +128,21 @@ export default function Data() {
       
       <TextInput 
          style={styles.input} value = { name }  
-         placeholder = "Nome" 
          onChangeText = { setName } 
        />
+
+      <Text style={styles.label}> Numero de gados ( Opcional, O nome dos gados serão gerado automaticamente ) </Text>
+
+      <TextInput 
+        style={styles.input} value = { count }   
+        keyboardType = "numeric"
+        onChangeText = { setCount } 
+      /> 
 
       <Text style={styles.label}> Peso em kilos </Text>
       
       <TextInput 
          style={styles.input} value = { peso }  
-         placeholder = "peso" 
          keyboardType = "numeric"
          onChangeText = { setPeso } 
        /> 
@@ -111,16 +159,30 @@ export default function Data() {
          onChangeText = { setIdade }
       />
 
+      <Text style={styles.label}> Numero do Brinco ( Opcional) </Text>
 
-      <Text style={styles.label}> Valor da compra ( Não e obrigatorio ) </Text>
+      <TextInput 
+         style={styles.input} value = { brinco }  
+         keyboardType = "numeric"
+         onChangeText = { setBrinco } 
+       /> 
+
+      <Text style={styles.label}> Informaçao Opcional ( Opcional) </Text>
+
+      <TextInput 
+        style={styles.input} value = { node }  
+        onChangeText = { setNode } 
+      /> 
+
+      <Text style={styles.label}> Valor da compra ( Opcional ) </Text>
       
       <TextInput 
          style={styles.input} value = { purchaseValue }  
-         placeholder = "Valor da compra" 
+         keyboardType = "numeric"
          onChangeText = { setPurchaseValue } 
        /> 
 
-      <Text style={styles.label}> Data da compra ( Não e obrigatorio ) </Text>
+      <Text style={styles.label}> Data da compra ( Opcional ) </Text>
       
       <TextInputMask
          type={'datetime'}
@@ -132,7 +194,25 @@ export default function Data() {
          onChangeText = { setDatePurchase }
       />
 
+      <Text style={styles.label}>Pasto ( Opcional ) </Text>
 
+      <Picker mode = "dropdown"  style={styles.picker}
+        selectedValue = { farms }
+        onValueChange={ ( itemValue, itemIndex ) =>
+          setFarms( itemValue )
+        }>
+
+        {/* { farms.map(( farm ) => 
+        {
+            return (
+              <Picker.Item key = { farm.id } label = { farm.name } value = { farm.id } />
+            );
+        })} */}
+        
+
+      </Picker>
+
+     
       <Text style={styles.label}>Raça</Text>
 
       <Picker mode = "dropdown"  style={styles.picker}
@@ -150,16 +230,34 @@ export default function Data() {
 
       </Picker>
 
-      <View style={styles.switchContainer}>
-        <Text style={styles.label}>O gado esta disponivel ?</Text>
-        <Switch
-          thumbColor="#fff"
-          trackColor={{ false: "#ccc", true: "#39CC83" }}
-          value={ status }
-          onValueChange={ setStatus }
-        />
-      </View>
-      
+      <Text style={styles.label}> Sexo </Text>
+
+      <Picker mode = "dropdown"  style={styles.picker}
+        selectedValue = { sexo }
+        onValueChange={ ( itemValue, itemIndex ) =>
+          setSexo( itemValue )
+        }>
+
+          <Picker.Item label = "Macho" value = "m" />
+          <Picker.Item label = "Fêmea" value = "f" />
+        
+      </Picker>
+
+      <Text style={styles.label}> Status </Text>
+
+      <Picker mode = "dropdown"  style={styles.picker}
+        selectedValue = { status }
+        onValueChange={ ( itemValue, itemIndex ) =>
+          setStatus( itemValue )
+        }>
+    
+          <Picker.Item label = "Ativo" value = "a" />
+          <Picker.Item label = "Emprestado" value = "e" />   
+          <Picker.Item label = "Locado" value = "l" />
+          <Picker.Item label = "Morto" value = "m" />
+        
+      </Picker>
+ 
       <RectButton style={styles.nextButton} onPress={ handleCreate }>
         <Text style={styles.nextButtonText}>Cadastrar</Text>
       </RectButton>
