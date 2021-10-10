@@ -13,16 +13,16 @@
       id: number;
 
       @Column()
-      dateEntryPicket: Date;
+      dateEntryPicket: String;
 
       @Column()
-      dateExitPicket: Date;
+      dateExitPicket: String;
 
       @Column()
       picketID: number;
 
       @Column( )
-      cattleID: number;
+      cattleID: string;
 
 
   }

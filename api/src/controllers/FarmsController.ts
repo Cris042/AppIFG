@@ -6,6 +6,7 @@ import picket from '../models/Picket';
 import picketView from '../views/picketView';
 import PastureType from '../models/PastureType';
 import PastureTypeView from '../views/PastureTypeView';
+import pickedUsed from '../models/PicketUsed';
 
 export default {
 
@@ -52,7 +53,7 @@ export default {
         name: Yup.string().required().min(3),
         countFood: Yup.number().required(),
         type: Yup.string().required(),
-        size: Yup.number().required(),
+        size: Yup.number().positive().required(),
         latitude: Yup.number().required(),
         longitude: Yup.number().required(),  
         status: Yup.number().required(),
@@ -92,5 +93,31 @@ export default {
       
       
   },
+
+  async createPickedUserd( req: Request, res: Response )
+  {
+    const pickedUsedRepository = getRepository( pickedUsed );
+
+    const picketID = req.body.piketUsed._parts[0][1],
+    cattleID = req.body.piketUsed._parts[1][1];
+
+    const dataObj = pickedUsedRepository.create({
+      dateEntryPicket: "teste",
+      dateExitPicket: null,
+      picketID,
+      cattleID,
+    });
+
+    try 
+    {
+      await pickedUsedRepository.save( dataObj );
+      return res.status(201).send();
+    } 
+    catch (err) 
+    {
+      return res.send();
+    }
+
+  }
 
 };

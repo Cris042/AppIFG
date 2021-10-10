@@ -20,12 +20,12 @@ export class PicketUsed1630987236758 implements MigrationInterface {
 
                 {
                     name: 'dateEntryPicket',
-                    type: 'date',
+                    type: 'varchar',
                 },
 
                 {
                     name: 'dateExitPicket',
-                    type: 'date',
+                    type: 'varchar',
                     isNullable: true,
                 },
 
@@ -36,7 +36,7 @@ export class PicketUsed1630987236758 implements MigrationInterface {
 
                 {
                     name: 'cattleID',
-                    type: 'integer',
+                    type: 'varchar',
                 },
 
               ],

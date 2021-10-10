@@ -1,7 +1,6 @@
 node_modules/
 .expo/
 npm-debug.*
-tarefas.txt
 *.jks
 *.p8
 *.p12

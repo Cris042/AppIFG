@@ -26,7 +26,7 @@ export class Picket1630987217646 implements MigrationInterface {
 
                 {
                     name: 'countFood',
-                    type: 'varchar',
+                    type: 'integer',
                 },
 
                 {

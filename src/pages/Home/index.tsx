@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Text, View } from "react-native";
 
-import MapView, { Callout,Marker,PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, { Callout,Marker,PROVIDER_GOOGLE, Circle } from "react-native-maps";
 import * as Progress from 'react-native-progress';
 
 import * as Location from "expo-location";
@@ -128,7 +128,7 @@ export default function Map()
                 >
                     <View style={styles.calloutContainer}>
                       <Text style={styles.calloutText}> Nome: { farm.name }</Text>
-                      <Text style={styles.calloutText}> Cabeçãs de gados: 10/20 </Text>
+                      <Text style={styles.calloutText}> Capacidade: 10/20 </Text>
                       <Text style={styles.calloutText}> Quantiade de Forragem</Text>
                       <Progress.Bar  progress={0.5} width={180} color="#3FC71D" /> 
                     </View>

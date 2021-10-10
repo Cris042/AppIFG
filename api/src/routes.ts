@@ -26,4 +26,8 @@ routes.get('/breed', CatteController.listBreed);
 
 routes.get('/farms/:id', FarmsController.show );
 
+routes.post('/pickedUsed', async( req, res ) => { 
+    await FarmsController.createPickedUserd( req, res ); 
+});
+
 export default routes;

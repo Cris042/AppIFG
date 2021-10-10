@@ -111,7 +111,7 @@ export default {
                   sexo,
                   node,
                   matriz,
-                  brinco : -1,
+                  brinco : Math.floor( Math.random() * 10000 + 256 ),
                   status, 
                   initialWeight, 
                   Weight, 

@@ -47,8 +47,9 @@ export default function Data() {
   const route = useRoute();
 
   // cadastro o piketUsed
-  // gerar a quantidade estimada da capacidade de gados
-  // gerar a quantidade estimada da forragem do piket
+  // gerar a quantidade estimada da capacidade de gados ( tamanho * tipo de forragem ) % ( cosumo medio dos gados )
+  // gerar a quantidade estimada da forragem do piket ( tamanho * tipo de forragem ) - ( dias * ( cosumo gado % 365 ) )
+  // tela Locaçao de Gados
 
   const [ name, setName ] = useState("");
   const [ count, setCount ] = useState("");
@@ -117,8 +118,9 @@ export default function Data() {
 
   
     const data = new FormData();
+    const nameCattle = ( name === "" ? breed +  Math.floor( Math.random() * 10000 + 256 ) : name );
 
-    data.append("name", String( name === "" ? breed +  Math.floor( Math.random() * 10000 + 1000 ) : name ) );
+    data.append("name", String( nameCattle ) );
     data.append("breed", String( breed ) );
     data.append("status",  String( status ) );
     data.append("initialWeight", String( peso ));
@@ -128,16 +130,29 @@ export default function Data() {
     data.append("idade",  String( idade ) );
     data.append("sexo", String( sexo ) );
     data.append("node", String( node === "" ? "null" : node ) );
-    data.append("brinco", String( brinco === "" ? "-1" : brinco ) );
+    data.append("brinco", String( brinco === "" ? Math.floor( Math.random() * 10000 + 256 ) : brinco ) );
     data.append("matriz", String( matriz ) );
     data.append("count", String( count ) );
 
+    
     const resp = await api.post("cattle", { data } );
 
     if( resp.status == 201 )
     {
-      alert( "Cadastro efetuado!!" );
+      if( farm != "-1" )
+      {
+          const piketUsed = new FormData();
+      
+          piketUsed.append("pikedID",  String( farm ) );
+          piketUsed.append("cattleID", String( nameCattle) );
+
+          await api.post("pickedUsed", { piketUsed } );
+
+      }
+
+      alert( "Cadastro efetuado!" );
       navigation.navigate("ListarGados");
+     
     }
     else
       alert("Ops! Ocorreu um error na hora do cadastro, verifique se todos campos foram preencidos.");
@@ -242,7 +257,7 @@ export default function Data() {
 
       <Text style={styles.label}> Matriz ( Opcional ) </Text>
 
-      <Picker mode = "dropdown"  style={styles.picker}
+      <Picker  style={styles.picker}
         selectedValue = { matriz }
         onValueChange={ ( itemValue, itemIndex ) =>
           setMatriz( itemValue )
