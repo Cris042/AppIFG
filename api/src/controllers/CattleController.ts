@@ -6,6 +6,7 @@ import Cattle from '../models/Cattle';
 import CattleView from '../views/CattleView';
 import Breed from '../models/Breed';
 import BreedView from '../views/BreedTypeView';
+import pickedUsed from '../models/PicketUsed';
 
 export default {
 
@@ -34,6 +35,7 @@ export default {
   {     
 
       const cattleRepository = getRepository( Cattle );
+      const pickedUsedRepository = getRepository( pickedUsed );
 
       const name = req.body.data._parts[0][1],
       breed = req.body.data._parts[1][1],
@@ -47,7 +49,8 @@ export default {
       node = req.body.data._parts[9][1],
       brinco = req.body.data._parts[10][1],
       matriz = req.body.data._parts[11][1],
-      count = req.body.data._parts[12][1];
+      count = req.body.data._parts[12][1],
+      farm = req.body.data._parts[13][1];
 
       const schema = Yup.object().shape({
          name: Yup.string().required(),
@@ -82,8 +85,8 @@ export default {
          name, 
          sexo,
          node,
-         matriz,
-         brinco,
+         matriz : matriz === "-1" ? null : matriz, 
+         brinco : brinco === "-1" ? null : brinco, 
          status, 
          initialWeight, 
          Weight, 
@@ -96,6 +99,20 @@ export default {
       {
          if( count == "")
          {
+            if( farm != "-1" )
+            {
+
+               const dataObj = pickedUsedRepository.create({
+                  dateEntryPicket: new Date().toLocaleDateString(),
+                  dateExitPicket: null,
+                  picketID: farm,
+                  cattleID: name,
+                });
+                     
+                await pickedUsedRepository.save( dataObj );           
+            
+            }
+
             await cattleRepository.save( cattle );
             return res.status(201).send();
          }
@@ -110,8 +127,8 @@ export default {
                   name : breed  + Math.floor( Math.random() * 10000 + 1000 ) ,
                   sexo,
                   node,
-                  matriz,
-                  brinco : Math.floor( Math.random() * 10000 + 256 ),
+                  matriz: matriz === "-1" ? null : matriz,
+                  brinco : null,
                   status, 
                   initialWeight, 
                   Weight, 
@@ -119,6 +136,20 @@ export default {
                   dateOfBirth, 
                   datePurchase
                });
+
+               if( farm != "-1" )
+               {
+
+                  const dataObj = pickedUsedRepository.create({
+                     dateEntryPicket: new Date().toLocaleDateString(),
+                     dateExitPicket: null,
+                     picketID: farm,
+                     cattleID: name,
+                   });
+                               
+                  await pickedUsedRepository.save( dataObj );                    
+                 
+               }
 
                await cattleRepository.save( cattle );
             }

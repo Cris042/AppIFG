@@ -101,8 +101,8 @@ export default function Map()
           initialRegion={{
             latitude: initialPosition.latitude,
             longitude: initialPosition.longitude,
-            latitudeDelta: 0.014,
-            longitudeDelta: 0.014,
+            latitudeDelta: 0.010,
+            longitudeDelta: 0.010,
           }}
         >
           { farms.map(( farm ) => 
@@ -128,7 +128,7 @@ export default function Map()
                 >
                     <View style={styles.calloutContainer}>
                       <Text style={styles.calloutText}> Nome: { farm.name }</Text>
-                      <Text style={styles.calloutText}> Capacidade: 10/20 </Text>
+                      <Text style={styles.calloutText}> Capacidade: 10/{ ( ( farm.countFood * farm.size ) / 4501 ).toFixed( 2 ) } </Text>
                       <Text style={styles.calloutText}> Quantiade de Forragem</Text>
                       <Progress.Bar  progress={0.5} width={180} color="#3FC71D" /> 
                     </View>

@@ -7,6 +7,7 @@ import {
   Switch,
 } from "react-native";
 
+import DatePicker from 'react-native-datepicker'
 import { RectButton } from "react-native-gesture-handler";
 import { Picker } from '@react-native-picker/picker';
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -43,14 +44,10 @@ interface Cattle
 }
 
 export default function Data() {
+
   const navigation = useNavigation();
   const route = useRoute();
-
-  // cadastro o piketUsed
-  // gerar a quantidade estimada da capacidade de gados ( tamanho * tipo de forragem ) % ( cosumo medio dos gados )
-  // gerar a quantidade estimada da forragem do piket ( tamanho * tipo de forragem ) - ( dias * ( cosumo gado % 365 ) )
-  // tela Locaçao de Gados
-
+  
   const [ name, setName ] = useState("");
   const [ count, setCount ] = useState("");
   const [ breed, setBreed ] = useState("");
@@ -133,27 +130,17 @@ export default function Data() {
     data.append("brinco", String( brinco === "" ? Math.floor( Math.random() * 10000 + 256 ) : brinco ) );
     data.append("matriz", String( matriz ) );
     data.append("count", String( count ) );
+    data.append("farm" , String( farm ) );
 
     
     const resp = await api.post("cattle", { data } );
 
     if( resp.status == 201 )
-    {
-      if( farm != "-1" )
-      {
-          const piketUsed = new FormData();
-      
-          piketUsed.append("pikedID",  String( farm ) );
-          piketUsed.append("cattleID", String( nameCattle) );
-
-          await api.post("pickedUsed", { piketUsed } );
-
-      }
-
-      alert( "Cadastro efetuado!" );
-      navigation.navigate("ListarGados");
-     
+    {    
+       alert( "Cadastro efetuado!" );
+       navigation.navigate("ListarGados");  
     }
+
     else
       alert("Ops! Ocorreu um error na hora do cadastro, verifique se todos campos foram preencidos.");
   
@@ -191,7 +178,7 @@ export default function Data() {
 
       <Text style={styles.label}> Data de Nacimento </Text>
       
-      <TextInputMask
+      {/* <TextInputMask
          type={'datetime'}
          options = {{
           format: 'DD/MM/YYYY'
@@ -199,6 +186,35 @@ export default function Data() {
          style={ styles.input }
          value={ idade }
          onChangeText = { setIdade }
+      /> */}
+
+        <DatePicker
+          style={{width: 350, marginBottom: 16, marginTop: 12 }}
+          date={ idade }
+          mode="date"
+          placeholder="select date"
+          format="DD-MM-YYYY"
+          minDate="01-01-1980"
+          maxDate="31-12-2021"
+          confirmBtnText="Confirm"
+          cancelBtnText="Cancel"
+          customStyles={{
+            dateIcon: {
+              position: 'absolute',
+              left: 0,
+              top: 4,
+              marginLeft: 0
+            },
+            dateInput: {
+              marginLeft: 36,
+              borderColor: "#d3e2e6",
+              backgroundColor: "#fff",
+              borderWidth: 1.8,
+              borderRadius: 20,
+              height: 50,
+            }
+        }}
+        onDateChange={ setIdade }
       />
 
       <Text style={styles.label}> Numero do Brinco ( Opcional) </Text>
@@ -226,14 +242,33 @@ export default function Data() {
 
       <Text style={styles.label}> Data da compra ( Opcional ) </Text>
       
-      <TextInputMask
-         type={'datetime'}
-         options = {{
-          format: 'DD/MM/YYYY'
-         }}
-         style={ styles.input }
-         value={ datePurchase }
-         onChangeText = { setDatePurchase }
+      <DatePicker
+          style={{width: 350, marginBottom: 16, marginTop: 12 }}
+          date={ datePurchase }
+          mode="date"
+          placeholder="select date"
+          format="DD-MM-YYYY"
+          minDate="01-01-2021"
+          maxDate="31-12-2021"
+          confirmBtnText="Confirm"
+          cancelBtnText="Cancel"
+          customStyles={{
+            dateIcon: {
+              position: 'absolute',
+              left: 0,
+              top: 4,
+              marginLeft: 0
+            },
+            dateInput: {
+              marginLeft: 36,
+              borderColor: "#d3e2e6",
+              backgroundColor: "#fff",
+              borderWidth: 1.8,
+              borderRadius: 20,
+              height: 50,
+            }
+        }}
+        onDateChange={ setDatePurchase }
       />
 
       <Text style={styles.label}>Pasto ( Opcional ) </Text>
