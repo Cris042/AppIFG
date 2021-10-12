@@ -4,9 +4,12 @@ import * as Yup from 'yup';
 
 import picket from '../models/Picket';
 import picketView from '../views/picketView';
+
 import PastureType from '../models/PastureType';
 import PastureTypeView from '../views/PastureTypeView';
-import pickedUsed from '../models/PicketUsed';
+
+import PickedUsed from '../models/PicketUsed';
+import picketUsedView from '../views/PickedUsedView'; 
 
 export default {
 
@@ -24,6 +27,14 @@ export default {
       const types = await Type.find({ });
 
       return res.json( PastureTypeView.renderMany( types ) );
+  },
+
+  async listPicketUsed( req: Request, res: Response )
+  {
+      const picketUsed = getRepository( PickedUsed );
+      const picketUsedCount = await picketUsed.find({ });
+
+      return res.json( picketUsedView.renderMany( picketUsedCount ) );
   },
 
   async show( req: Request, res: Response)
@@ -96,7 +107,7 @@ export default {
 
   async createPickedUserd( req: Request, res: Response )
   {
-    const pickedUsedRepository = getRepository( pickedUsed );
+    const pickedUsedRepository = getRepository( PickedUsed );
 
     const picketID = req.body.piketUsed._parts[0][1],
     cattleID = req.body.piketUsed._parts[1][1];

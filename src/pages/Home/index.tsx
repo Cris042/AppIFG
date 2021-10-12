@@ -25,10 +25,19 @@ interface Farms {
   longitude: number;
 }
 
+interface PickedUsed{
+  dateEntryPicket: String,
+  dateExitPicket: String,
+  picketID : number,
+  cattleID : string,
+}
+
 export default function Map() 
 {
     const navigation = useNavigation();
     const [ farms , setFarms ] = useState<Farms[]>([]);
+    const [ pickedUsed , setPicketUsed ] = useState<PickedUsed[]>([]);
+    let count = 0;
 
     const [initialPosition, setInitialPosition] = useState({
       latitude: -16.81508090497519,
@@ -71,10 +80,12 @@ export default function Map()
       async function load() 
       {
         const response = await api.get("picket");
-  
+        const picketUsedCount = await api.get("picketUsed");
+       
+        setPicketUsed( picketUsedCount.data );
         setFarms( response.data );
       }
-  
+      
       load();
 
     });
@@ -87,7 +98,7 @@ export default function Map()
   
   function handleNavigateToCreateFarms() 
   {
-    navigation.navigate("SelectMapPosition", { initialPosition });
+     navigation.navigate("SelectMapPosition", { initialPosition });
   }
   
   return (
@@ -106,7 +117,9 @@ export default function Map()
           }}
         >
           { farms.map(( farm ) => 
-          {
+          { 
+
+            { count == 0 ? count = count : count = 0 }
             return (
               <Marker
                 key={ farm.id }
@@ -126,9 +139,14 @@ export default function Map()
                     tooltip
                     onPress={() => handleNavigatFarmDetails( farm.id )}
                 >
+    
                     <View style={styles.calloutContainer}>
-                      <Text style={styles.calloutText}> Nome: { farm.name }</Text>
-                      <Text style={styles.calloutText}> Capacidade: 10/{ ( ( farm.countFood * farm.size ) / 4501 ).toFixed( 2 ) } </Text>
+                      <Text style={styles.calloutText}> Nome : { farm.name }</Text>
+                      <Text style={styles.calloutText}> Capacidade :            
+                        { pickedUsed.map(( picket ) => { picket.picketID === farm.id? count++ : count = count } ) } 
+                        { count } /
+                        { ( ( farm.countFood * farm.size ) / 4501 ).toFixed( 0 ) } 
+                      </Text>
                       <Text style={styles.calloutText}> Quantiade de Forragem</Text>
                       <Progress.Bar  progress={0.5} width={180} color="#3FC71D" /> 
                     </View>

@@ -10,6 +10,8 @@ const upload = multer( uploadConfig );
 
 routes.get('/picket', FarmsController.index );
 
+routes.get('/picketUsed', FarmsController.listPicketUsed );
+
 routes.get('/types', FarmsController.listType );
 
 routes.get('/cattle', CatteController.index );
@@ -22,7 +24,7 @@ routes.post('/cattle', async( req, res ) => {
     await CatteController.create( req, res );
 });
 
-routes.get('/breed', CatteController.listBreed);
+routes.get('/breed', CatteController.listBreed );
 
 routes.get('/farms/:id', FarmsController.show );
 
