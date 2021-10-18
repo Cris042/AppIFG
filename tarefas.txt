@@ -1,31 +1,45 @@
+   "Telas"
+   {
+      tela : "login"
+      tela : "home"
+      tela : "cadastro piquete"
+      tela : "Gerenciar Gados"
+      *tela : Minha conta   
+      *tela : "Minha propriedade"
+      *tela : "Locaçao de Gados"
+   }
 
-diario 
- 
-   tela : "login"
-   tela : "home"
-   tela : "cadastro piquete"
-   Banco de dados 
-   tela : "Gerenciar Gados"
-   *tela : Minha conta   
-   *tela : "Minha propriedade"
-   *tela : "Locaçao de Gados"
-   *login funcionalidade
-  
+   {
+      *login
+      Banco de dados 
+   }
+    
    "Gerenciar Gados"
    {
       cadastro, 
-      *tranferir gados, 
       *ditar, 
-      *deletar, 
-     
+      *pesquisa
    }
-  
+
+   "Gerenciar piquete"
+   {
+      cadastro, 
+      *ditar, 
+      *pesquisa
+   }
+
+   "Locaçao de Gados"
+   {
+      *adicionar,
+      *deletar,
+      *pesquisa
+   }
+   
    "Home\piquetes"
    {
       cadastro, 
       *ditar, 
-      *deletar, 
-      *locaçao de gados, 
+      *deletar
    } 
     
    "minha conta\meus dados"
@@ -43,10 +57,13 @@ diario
   
 
 Ajustes
+
 - eatá permitindo cadastra piquetes na mesma posição
-- as informaçoes do: tipo, status, size e localizaçao nao estao aparecendo corretamente na hora de editar piquete
 - limpa os input depois de realizar um cadastro
+
 - mostar as informaçoes dos gados e dos pasto na pagina de gerenciar Gados
-- criar filtros nas paginas de listagem de gados e listagem de piquete 
-- mostra o pasto do gado em listagem de gados
+- criar filtros nas paginas de listagem de gados,locaçao de gados e listagem de piquete 
+- as informaçoes do: tipo, status, size e localizaçao nao estao aparecendo corretamente na hora de editar piquete
+
+- mostra uma tela de carregando enquato procura as informaçoes em listagem de gados e listagem de piquetes
 

@@ -68,6 +68,10 @@ export default function Map()
           // alert( initialPosition.latitude );
 
           // setInitialPosition( { latitude, longitude } );
+
+          const picketUsedCount = await api.get("picketUsed");
+       
+          setPicketUsed( picketUsedCount.data );
       }
 
       loadPosition();
@@ -80,26 +84,23 @@ export default function Map()
       async function load() 
       {
         const response = await api.get("picket");
-        const picketUsedCount = await api.get("picketUsed");
-       
-        setPicketUsed( picketUsedCount.data );
         setFarms( response.data );
       }
       
       load();
-
+      
     });
+  
+    function handleNavigatFarmDetails( id: number ) 
+    {
+        navigation.navigate("FazendaEdit", { id } );
+    }
+    
+    function handleNavigateToCreateFarms() 
+    {
+      navigation.navigate("SelectMapPosition", { initialPosition });
+    }
 
-  
-  function handleNavigatFarmDetails( id: number ) 
-  {
-      navigation.navigate("FazendaEdit", { id } );
-  }
-  
-  function handleNavigateToCreateFarms() 
-  {
-     navigation.navigate("SelectMapPosition", { initialPosition });
-  }
   
   return (
     <View style={styles.container}>
@@ -119,7 +120,7 @@ export default function Map()
           { farms.map(( farm ) => 
           { 
 
-            { count == 0 ? count = count : count = 0 }
+            { count == 0 }
             return (
               <Marker
                 key={ farm.id }
@@ -143,7 +144,7 @@ export default function Map()
                     <View style={styles.calloutContainer}>
                       <Text style={styles.calloutText}> Nome : { farm.name }</Text>
                       <Text style={styles.calloutText}> Capacidade :            
-                        { pickedUsed.map(( picket ) => { picket.picketID === farm.id? count++ : count = count } ) } 
+                        { pickedUsed.map(( picket ) => { picket.picketID === farm.id ? count++ : "" } ) } 
                         { count } /
                         { ( ( farm.countFood * farm.size ) / 4501 ).toFixed( 0 ) } 
                       </Text>

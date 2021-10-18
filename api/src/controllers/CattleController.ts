@@ -124,7 +124,7 @@ export default {
             
                const cattle = cattleRepository.create({
                   breed, 
-                  name : breed  + Math.floor( Math.random() * 10000 + 1000 ) ,
+                  name : breed  + Math.floor( Math.random() * 2560000 + 256 ) ,
                   sexo,
                   node,
                   matriz: matriz === "-1" ? null : matriz,
