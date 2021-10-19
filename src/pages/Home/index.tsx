@@ -120,7 +120,7 @@ export default function Map()
           { farms.map(( farm ) => 
           { 
 
-            { count == 0 }
+            { count = 0 }
             return (
               <Marker
                 key={ farm.id }

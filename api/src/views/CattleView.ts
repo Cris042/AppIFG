@@ -5,6 +5,7 @@ export default {
     return {
       id: cattle.id,
       name:  cattle.name,
+      sexo:  cattle.sexo,
       breed:  cattle.breed,
       status:  cattle.status,
       initialWeight:  cattle.initialWeight,
