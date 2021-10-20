@@ -24,5 +24,8 @@
       @Column( )
       cattleID: string;
 
+      @Column()
+      occupancyRate: number;
+
 
   }

@@ -117,6 +117,14 @@ export default function Data() {
     const data = new FormData();
     const nameCattle = ( name === "" ? breed +  Math.floor( Math.random() * 10000 + 256 ) : name );
 
+    const typePiquet =  farms.find( farms => farms.id === parseInt( farm ) );
+    const amountOffood = typePiquet?.countFood;
+
+    const typeBreed =  breeds.find( breeds => breeds.name === breed );
+    const consumptionBreed = typeBreed?.consumption;
+
+    const occupancyRate =  ( amountOffood != null ? amountOffood : 0 ) / ( consumptionBreed != null ? consumptionBreed : 0 );
+
     data.append("name", String( nameCattle ) );
     data.append("breed", String( breed ) );
     data.append("status",  String( status ) );
@@ -127,10 +135,12 @@ export default function Data() {
     data.append("idade",  String( idade ) );
     data.append("sexo", String( sexo ) );
     data.append("node", String( node === "" ? "null" : node ) );
-    data.append("brinco", String( brinco === "" ? Math.floor( Math.random() * 10000 + 256 ) : brinco ) );
+    data.append("brinco", String( brinco === "" ? "-1" : brinco ) );
     data.append("matriz", String( matriz ) );
     data.append("count", String( count ) );
     data.append("farm" , String( farm ) );
+    data.append("occupancyRate", String( occupancyRate.toFixed( 1 ) ) );
+  
 
     
     const resp = await api.post("cattle", { data } );

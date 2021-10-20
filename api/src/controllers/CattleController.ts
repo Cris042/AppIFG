@@ -50,7 +50,8 @@ export default {
       brinco = req.body.data._parts[10][1],
       matriz = req.body.data._parts[11][1],
       count = req.body.data._parts[12][1],
-      farm = req.body.data._parts[13][1];
+      farm = req.body.data._parts[13][1],
+      occupancyRate = req.body.data._parts[14][1];
 
       const schema = Yup.object().shape({
          name: Yup.string().required(),
@@ -107,6 +108,7 @@ export default {
                   dateExitPicket: null,
                   picketID: farm,
                   cattleID: name,
+                  occupancyRate: occupancyRate,
                 });
                      
                 await pickedUsedRepository.save( dataObj );           
@@ -127,8 +129,8 @@ export default {
                   name : breed  + Math.floor( Math.random() * 2560000 + 256 ) ,
                   sexo,
                   node,
-                  matriz: matriz === "-1" ? null : matriz,
-                  brinco : null,
+                  matriz : matriz  === "-1" ? null : matriz,
+                  brinco : brinco  === "-1" ? null : (  parseInt( brinco ) + i ),
                   status, 
                   initialWeight, 
                   Weight, 
@@ -145,6 +147,7 @@ export default {
                      dateExitPicket: null,
                      picketID: farm,
                      cattleID: name,
+                     occupancyRate: occupancyRate,
                    });
                                
                   await pickedUsedRepository.save( dataObj );                    

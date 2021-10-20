@@ -39,6 +39,11 @@ export class PicketUsed1630987236758 implements MigrationInterface {
                     type: 'varchar',
                 },
 
+                {
+                    name: 'occupancyRate',
+                    type: 'integer',
+                },
+
               ],
               
             })
