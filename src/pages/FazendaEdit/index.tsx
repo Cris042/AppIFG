@@ -13,6 +13,8 @@ import MapView, { Marker } from "react-native-maps";
 import { RectButton } from "react-native-gesture-handler";
 import { Picker } from '@react-native-picker/picker';
 import { useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import styles from "./styles";
 import api from "../../services/axios";
@@ -36,6 +38,7 @@ interface Farms {
 export default function FazendaEdit()
 {
   const route = useRoute();
+  const navigation = useNavigation();
 
   const [ Farm, setFarms ] = useState<Farms>();
 
@@ -65,12 +68,21 @@ export default function FazendaEdit()
     alert("Ops!")
   } 
 
+  function handleManagePasture()
+  {
+     navigation.navigate("ManagePasture");
+  }
+
   return (
       <ScrollView
       style={styles.container}
       contentContainerStyle={{ padding: 24 }}
       >
         <Text style={styles.title}> { Farm.name } </Text>
+
+        <RectButton style={styles.button} onPress={ handleManagePasture  }>
+          <MaterialCommunityIcons name = "cog-outline" size = { 35 } color="#000" /> 
+        </RectButton>
 
         <View style={styles.mapView}>
           <MapView

@@ -27,7 +27,7 @@ export default StyleSheet.create({
     color: "#000",
     textAlign: "center",
     fontSize: 14,
-    marginBottom: 2,
+    marginBottom: 5,
   },
 
   footer: {

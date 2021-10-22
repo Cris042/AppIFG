@@ -30,6 +30,7 @@ interface PickedUsed{
   dateExitPicket: String,
   picketID : number,
   cattleID : string,
+  occupancyRate : number,
 }
 
 export default function Map() 
@@ -37,6 +38,7 @@ export default function Map()
     const navigation = useNavigation();
     const [ farms , setFarms ] = useState<Farms[]>([]);
     const [ pickedUsed , setPicketUsed ] = useState<PickedUsed[]>([]);
+
     let count = 0;
 
     const [initialPosition, setInitialPosition] = useState({
@@ -143,13 +145,13 @@ export default function Map()
     
                     <View style={styles.calloutContainer}>
                       <Text style={styles.calloutText}> Nome : { farm.name }</Text>
-                      <Text style={styles.calloutText}> Capacidade :            
-                        { pickedUsed.map(( picket ) => { picket.picketID === farm.id ? count++ : "" } ) } 
-                        { count } /
-                        { ( ( farm.countFood * farm.size ) / 4501 ).toFixed( 0 ) } 
+                      <Text style={styles.calloutText}> Hectares Ocupados </Text>
+                      <Text style={styles.calloutText}>       
+                        { pickedUsed.map(( picket ) => { picket.picketID === farm.id ? count = picket.occupancyRate : "" } ) } 
+                        { ( 10 / count ).toFixed( 1 ) } de  
+                        { farm.size }
                       </Text>
-                      <Text style={styles.calloutText}> Quantiade de Forragem</Text>
-                      <Progress.Bar  progress={0.5} width={180} color="#3FC71D" /> 
+                      <Progress.Bar  progress={  ( 10 / count ) * 0.10  } width = { 180 }  color="#3FC71D" /> 
                     </View>
 
                 </Callout>

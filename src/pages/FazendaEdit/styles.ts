@@ -6,11 +6,14 @@ export default StyleSheet.create({
   },
 
   title: {
+    width: "90%",
+    marginLeft: "5%",
+    marginRight: '5%',
     color: "#27b844",
     fontSize: 24,
     marginBottom: 32,
     marginTop: 32,
-    textAlign: "center",
+    textAlign: "left",
     paddingBottom: 24,
     borderBottomWidth: 1.2,
     borderBottomColor: "#ccc",
@@ -76,6 +79,12 @@ export default StyleSheet.create({
     alignItems: "center",
     height: 56,
     marginTop: 32,
+  },
+
+  button : {
+    position: "absolute",
+    marginTop: 58,
+    marginLeft: "88%",
   },
 
   nextButtonText: {
