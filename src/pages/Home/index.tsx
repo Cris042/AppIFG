@@ -147,11 +147,11 @@ export default function Map()
                       <Text style={styles.calloutText}> Nome : { farm.name }</Text>
                       <Text style={styles.calloutText}> Hectares Ocupados </Text>
                       <Text style={styles.calloutText}>       
-                        { pickedUsed.map(( picket ) => { picket.picketID === farm.id ? count = picket.occupancyRate : "" } ) } 
-                        { ( 10 / count ).toFixed( 1 ) } de  
+                        { pickedUsed.map(( picket ) => { picket.picketID === farm.id ? count = count + ( 1 / picket.occupancyRate ) : 0 } ) } 
+                        { count != 0 ? count.toFixed( 1 ) : 0 } de  
                         { farm.size }
                       </Text>
-                      <Progress.Bar  progress={  ( 10 / count ) * 0.10  } width = { 180 }  color="#3FC71D" /> 
+                      <Progress.Bar  progress={ count != 0 ? count  * 0.10 : 0 } width = { 180 }  color="#3FC71D" /> 
                     </View>
 
                 </Callout>

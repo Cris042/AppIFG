@@ -120,13 +120,16 @@ export default {
          }
          else
          {
+            let  nameRandom = "";
 
             for( var i = 0; i < count; i++ )
             {
             
+               nameRandom = breed  + Math.floor( Math.random() * 2560000 + 256 );
+
                const cattle = cattleRepository.create({
                   breed, 
-                  name : breed  + Math.floor( Math.random() * 2560000 + 256 ) ,
+                  name : nameRandom,
                   sexo,
                   node,
                   matriz : matriz  === "-1" ? null : matriz,
@@ -146,7 +149,7 @@ export default {
                      dateEntryPicket: new Date().toLocaleDateString(),
                      dateExitPicket: null,
                      picketID: farm,
-                     cattleID: name,
+                     cattleID: nameRandom,
                      occupancyRate: occupancyRate,
                    });
                                

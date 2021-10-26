@@ -4,9 +4,9 @@
       tela : "home"
       tela : "cadastro piquete"
       tela : "Gerenciar Gados"
+      tela : "Locaçao de Gados"
       *tela : Minha conta   
-      *tela : "Minha propriedade"
-      *tela : "Locaçao de Gados"
+      *tela : "Minha propriedade"  
    }
 
    {
@@ -39,7 +39,6 @@
    {
       cadastro, 
       *ditar, 
-      *deletar
    } 
     
    "minha conta\meus dados"

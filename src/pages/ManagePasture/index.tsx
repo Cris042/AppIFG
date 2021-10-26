@@ -10,9 +10,14 @@ import {  useNavigation } from "@react-navigation/native";
 
 import { Feather } from "@expo/vector-icons";
 import { RectButton } from "react-native-gesture-handler";
+import { useRoute } from "@react-navigation/native";
 
 import styles from "./styles";
 import api from "../../services/axios";
+
+interface DetailsRouteParams {
+    id: number;
+}
 
 interface PickedUsed{
     id: number;
@@ -23,12 +28,39 @@ interface PickedUsed{
     occupancyRate : number,
 }
 
+interface Cattle{
+    id: number;
+    name: string;
+    breed: string; 
+    status: boolean;
+    initialWeight: number; 
+    Weight: number;  
+    dateOfBirth: Date;  
+    sexo: string;
+}
+
+interface Farms {
+    id: number;
+    name: string;
+    size: number;
+    countFood: number;
+    latitude: number;
+    longitude: number;
+}
+
 const ManagePasture: React.FC = () => {
 
+    const route = useRoute();
     const navigation = useNavigation();
-    const [ cattle , setCattle ] = useState<PickedUsed[]>([]);
 
+    const [ picket , setPicket ] = useState<PickedUsed[]>([]);
+    const [ cattle , setCattle ] = useState<Cattle[]>([]);
+    const [ farms , setFarms ] = useState<Farms[]>([]);
+
+    const params = route.params as DetailsRouteParams;
     const now = new Date();
+
+    let count = 0;
 
     useEffect(() => 
     {
@@ -36,45 +68,84 @@ const ManagePasture: React.FC = () => {
       async function load() 
       {
         const response = await api.get("picketUsed");
-  
-        setCattle( response.data );
+     
+        setPicket( response.data );
       }
   
       load();
 
     });
 
+    useEffect(() => 
+    {
+  
+      async function loadCattle() 
+      {
+        const response = await api.get("cattle");
+  
+        setCattle( response.data );
+      }
+  
+      loadCattle();
+  
+    }, []);
+
+
+    useEffect(() => 
+    {
+  
+      async function loadPiket() 
+      {
+        const response = await api.get("picket");
+  
+        setFarms( response.data );
+      }
+  
+      loadPiket();
+  
+    }, []);
+
     function handleNavigatCattleList()
     {
-        navigation.navigate("CadastarGados");
+        alert( "ops!");
     }
 
 
     return (
         <View style = { styles.container } >
     
-            <Text style = { styles.title }>Gados</Text>
+            <Text style = { styles.title }>Gerenciar Pasto</Text>
 
             <ScrollView style= { styles.scroll } >
 
-                { cattle.map(( cattle ) => 
+                { picket.map(( picket ) => 
                 {
-                    return( 
-                        <View key = { cattle.id } style = { styles.card } >
-                            <View style = { styles.iconCard }>
-                                <MaterialCommunityIcons name = "cow" size={50} color="#000" /> 
-                            </View>
+                    if( picket.picketID === params.id )
+                    {
+                        count++; 
+                        const cattkeObj =  cattle.find( cattle => cattle.name === picket.cattleID );
+                        const picketObj =  farms.find( farms => farms.id === picket.picketID );
 
-                            <View style = { styles.cardBory }>
-                                <Text style = { styles.textCard }> Nome : { cattle.cattleID } </Text>  
-                                <Text style = { styles.textCard }> Raça : { cattle.dateEntryPicket } </Text>    
-                                <Text style = { styles.textCard }> Peso : { cattle.occupancyRate } </Text> 
-                                <Text style = { styles.textCard }> Sexo : { cattle.picketID } </Text>               
-                            </View>
+                        let sizePicket = picketObj?.size != null ? picketObj?.size : 0;
 
-                            <Text style = { styles.btnCard }  > Editar Gado </Text>   
-                        </View>
-                    );   
+                        return( 
+                            <View key = { picket.id } style = { styles.card } >
+                                <View style = { styles.iconCard }>
+                                    <MaterialCommunityIcons name = "cow" size={50} color="#000" /> 
+                                </View>
+
+                                <View style = { styles.cardBory }>
+                                    <Text style = { styles.textCard }> Taxa de Ocupaçao : { ( 100 / ( sizePicket / ( 1 / picket.occupancyRate ) )  ).toFixed( 1 ) }% </Text>         
+                                    <Text style = { styles.textCard }> Nome : { cattkeObj?.name } </Text>  
+                                    <Text style = { styles.textCard }> Sexo : { cattkeObj?.sexo  == "m" ? "Masculino" : "Femenino" } </Text>         
+                                    <Text style = { styles.textCard }> Raça : { cattkeObj?.breed } </Text>    
+                                    <Text style = { styles.textCard }> Peso : { cattkeObj?.Weight } </Text>                             
+                                </View>
+
+                                <Text style = { styles.btnCard }  > Remover </Text>   
+                            </View>
+                        );   
+                    }
                 })}
 
             </ScrollView>
@@ -82,7 +153,7 @@ const ManagePasture: React.FC = () => {
             <View style={styles.footer}>
 
                 <Text style={styles.footerText}>
-                    { cattle.length } Gados(s) encontrado(s)
+                    {  count } Gados(s) encontrado(s)
                 </Text>
 
                 <RectButton

@@ -68,9 +68,9 @@ export default function FazendaEdit()
     alert("Ops!")
   } 
 
-  function handleManagePasture()
+  function handleManagePasture( id: number )
   {
-     navigation.navigate("ManagePasture");
+     navigation.navigate("ManagePasture", { id } );
   }
 
   return (
@@ -80,7 +80,7 @@ export default function FazendaEdit()
       >
         <Text style={styles.title}> { Farm.name } </Text>
 
-        <RectButton style={styles.button} onPress={ handleManagePasture  }>
+        <RectButton style={styles.button} onPress = { () => handleManagePasture( Farm.id )  }>
           <MaterialCommunityIcons name = "cog-outline" size = { 35 } color="#000" /> 
         </RectButton>
 

@@ -42,7 +42,6 @@ export default {
     const { id } = req.params;
 
     const picketRepository = getRepository( picket );
-
     const picketID = await picketRepository.findOneOrFail( id );
 
     return res.json( picketView.render(  picketID ) );
