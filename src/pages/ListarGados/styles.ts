@@ -3,27 +3,23 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    width: '92%',
+    width: '100%',
+    height: '100%',
     padding: '5%',
-    marginTop: '8%',
-    marginBottom: '2%',
-    marginLeft: '4%',
-    marginRight: '4%',
     overflow: "hidden",
   },
 
   title: {
     width: "60%",
-    marginLeft: "18%",
-    marginRight: '18%',
-    color: "#27b844",
-    fontSize: 24,
-    marginTop: 35,
-    marginBottom: 40,
+    alignSelf:"center",
+    color: "#373b38",
+    fontSize: 25,
+    marginTop: 25,
+    marginBottom: 20,
     textAlign: "center",
-    paddingBottom: 22,
+    paddingBottom: 5,
     borderBottomWidth: 1.5,
-    borderBottomColor: "#C0B8B8",
+    borderBottomColor: "#222",
   },
 
   scroll: {
@@ -31,16 +27,23 @@ export default StyleSheet.create({
     paddingLeft: "10%",
     paddingRight: "10%",
     paddingTop: "2%",
-    borderRadius: 20,
+    borderRadius: 5,
     borderWidth: 1,
     borderColor: "#C0B8B8",
    
+  },
+
+  imageCow:{
+    height: 40,
+    width: 40,
+    alignSelf:'center',
+    marginRight:2
   },
   
   card: {
     width: '100%',
     marginBottom: '5%',
-    borderRadius: 20,
+    borderRadius: 5,
     borderWidth: 1.0,
     borderColor: "#222",
     backgroundColor: "#FFFFFF",

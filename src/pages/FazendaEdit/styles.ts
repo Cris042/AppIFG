@@ -6,10 +6,7 @@ export default StyleSheet.create({
   },
 
   title: {
-    width: "90%",
-    marginLeft: "5%",
-    marginRight: '5%',
-    color: "#27b844",
+    color: "#373b38",
     fontSize: 24,
     marginBottom: 32,
     marginTop: 32,
@@ -33,7 +30,7 @@ export default StyleSheet.create({
     backgroundColor: "#fff",
     borderWidth: 1.4,
     borderColor: "#d3e2e6",
-    borderRadius: 20,
+    borderRadius:5,
     height: 56,
     paddingVertical: 18,
     paddingHorizontal: 24,
@@ -73,8 +70,8 @@ export default StyleSheet.create({
   },
 
   nextButton: {
-    backgroundColor: "#51EE49",
-    borderRadius: 20,
+    backgroundColor: "#373b38",
+    borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",
     height: 56,
@@ -88,7 +85,7 @@ export default StyleSheet.create({
   },
 
   nextButtonText: {
-    fontSize: 16,
+    fontSize: 18,
     color: "#FFF",
   },
 
