@@ -152,7 +152,7 @@ export default function Data() {
     }
 
     else
-      alert("Ops! Ocorreu um error na hora do cadastro, verifique se todos campos foram preencidos.");
+      alert("Ops! Ocorreu um erro na hora do cadastro, verifique se todos os campos foram preenchidos.");
   
   } 
 
@@ -163,14 +163,14 @@ export default function Data() {
     >
       <Text style={styles.title}>Cadastro de Gado</Text>
 
-      <Text style={styles.label}>Nome ( O nome será gerado automaticamente caso deixer o campo vazio ) </Text>
+      <Text style={styles.label}>Nome (O nome será gerado automaticamente caso deixe o campo vazio) </Text>
       
       <TextInput 
          style={styles.input} value = { name }  
          onChangeText = { setName } 
        />
 
-      <Text style={styles.label}> Numero de gados ( Opcional, O nome dos gados serão gerado automaticamente ) </Text>
+      <Text style={styles.label}> Número de gados (Opcional, o nome dos gados serão gerados automaticamente) </Text>
 
       <TextInput 
         style={styles.input} value = { count }   
@@ -178,7 +178,7 @@ export default function Data() {
         onChangeText = { setCount } 
       /> 
 
-      <Text style={styles.label}> Peso em kilos </Text>
+      <Text style={styles.label}> Peso em kg </Text>
       
       <TextInput 
          style={styles.input} value = { peso }  
@@ -186,7 +186,7 @@ export default function Data() {
          onChangeText = { setPeso } 
        /> 
 
-      <Text style={styles.label}> Data de Nacimento </Text>
+      <Text style={styles.label}> Data de Nascimento </Text>
       
       {/* <TextInputMask
          type={'datetime'}
@@ -199,10 +199,10 @@ export default function Data() {
       /> */}
 
         <DatePicker
-          style={{width: 350, marginBottom: 16, marginTop: 12 }}
+          style={{width: 310, marginBottom: 16, marginTop: 12 }}
           date={ idade }
           mode="date"
-          placeholder="select date"
+          placeholder="Selecione a data"
           format="DD-MM-YYYY"
           minDate="01-01-1980"
           maxDate="31-12-2021"
@@ -220,14 +220,14 @@ export default function Data() {
               borderColor: "#d3e2e6",
               backgroundColor: "#fff",
               borderWidth: 1.8,
-              borderRadius: 20,
+              borderRadius: 5,
               height: 50,
             }
         }}
         onDateChange={ setIdade }
       />
 
-      <Text style={styles.label}> Numero do Brinco ( Opcional) </Text>
+      <Text style={styles.label}> Número do Brinco (Opcional) </Text>
 
       <TextInput 
          style={styles.input} value = { brinco }  
@@ -235,14 +235,14 @@ export default function Data() {
          onChangeText = { setBrinco } 
        /> 
 
-      <Text style={styles.label}> Informaçao Opcional ( Opcional) </Text>
+      <Text style={styles.label}> Informação Opcional (Opcional) </Text>
 
       <TextInput 
         style={styles.input} value = { node }  
         onChangeText = { setNode } 
       /> 
 
-      <Text style={styles.label}> Valor da compra ( Opcional ) </Text>
+      <Text style={styles.label}> Valor da compra (Opcional) </Text>
       
       <TextInput 
          style={styles.input} value = { purchaseValue }  
@@ -250,13 +250,13 @@ export default function Data() {
          onChangeText = { setPurchaseValue } 
        /> 
 
-      <Text style={styles.label}> Data da compra ( Opcional ) </Text>
+      <Text style={styles.label}> Data da compra (Opcional) </Text>
       
       <DatePicker
-          style={{width: 350, marginBottom: 16, marginTop: 12 }}
+          style={{width: 310, marginBottom: 16, marginTop: 12 }}
           date={ datePurchase }
           mode="date"
-          placeholder="select date"
+          placeholder="Selecione a data"
           format="DD-MM-YYYY"
           minDate="01-01-2021"
           maxDate="31-12-2021"
@@ -274,14 +274,14 @@ export default function Data() {
               borderColor: "#d3e2e6",
               backgroundColor: "#fff",
               borderWidth: 1.8,
-              borderRadius: 20,
+              borderRadius: 5,
               height: 50,
             }
         }}
         onDateChange={ setDatePurchase }
       />
 
-      <Text style={styles.label}>Pasto ( Opcional ) </Text>
+      <Text style={styles.label}>Pasto (Opcional) </Text>
 
       <Picker mode = "dropdown"  style={styles.picker}
         selectedValue = { farm }
@@ -289,7 +289,7 @@ export default function Data() {
           setFarm( itemValue )
         }>
 
-          <Picker.Item label = "Escolhar uma Pasto" value = "-1" />
+          <Picker.Item label = "Escolha um Pasto" value = "-1" />
           { farms.map(( farm ) => 
           {
               return (
@@ -300,7 +300,7 @@ export default function Data() {
 
       </Picker>
 
-      <Text style={styles.label}> Matriz ( Opcional ) </Text>
+      <Text style={styles.label}> Matriz (Opcional) </Text>
 
       <Picker  style={styles.picker}
         selectedValue = { matriz }
@@ -308,7 +308,7 @@ export default function Data() {
           setMatriz( itemValue )
         }>
 
-          <Picker.Item label = "Escolhar uma Matriz" value = "-1" />
+          <Picker.Item label = "Escolha uma Matriz" value = "-1" />
           {  cattle.map(( cattle ) => 
           {
               return (
