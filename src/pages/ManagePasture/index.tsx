@@ -135,7 +135,7 @@ const ManagePasture: React.FC = () => {
                                 </View>
 
                                 <View style = { styles.cardBory }>
-                                    <Text style = { styles.textCard }> Taxa de Ocupaçao : { ( 100 / ( sizePicket / ( 1 / picket.occupancyRate ) )  ).toFixed( 1 ) }% </Text>         
+                                    <Text style = { styles.textCard }> Taxa de Ocupação : { ( 100 / ( sizePicket / ( 1 / picket.occupancyRate ) )  ).toFixed( 1 ) }% </Text>         
                                     <Text style = { styles.textCard }> Nome : { cattkeObj?.name } </Text>  
                                     <Text style = { styles.textCard }> Sexo : { cattkeObj?.sexo  == "m" ? "Masculino" : "Femenino" } </Text>         
                                     <Text style = { styles.textCard }> Raça : { cattkeObj?.breed } </Text>    

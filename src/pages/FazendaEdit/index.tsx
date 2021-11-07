@@ -110,9 +110,9 @@ export default function FazendaEdit()
         </View>
 
         <Text style={styles.label}>Nome</Text>
-        <TextInput style={styles.input} value = { Farm.name } placeholder = "Nome do pasto ( Minimo 3 letras )"  />
+        <TextInput style={styles.input} value = { Farm.name } placeholder = "Nome do pasto (Minimo 3 letras)"  />
 
-        <Text style={styles.label}>Tamanho em hectares</Text>
+        <Text style={styles.label}>Tamanho em Hectares</Text>
         <TextInput style={styles.input} value = "123"  keyboardType = "numeric"  placeholder = "Tamanho do pasto" />
 
         <Text style={styles.label}>Tipo</Text>
@@ -124,7 +124,7 @@ export default function FazendaEdit()
         </Picker>
 
         <View style={styles.switchContainer}>
-          <Text style={styles.label}>O pasto esta disponivel ?</Text>
+          <Text style={styles.label}>O pasto esta disponível ?</Text>
           <Switch
             thumbColor="#fff"
             trackColor={{ false: "#ccc", true: "#39CC83" }}
