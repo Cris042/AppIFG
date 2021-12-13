@@ -3,7 +3,7 @@ import React,{ useState, useEffect } from 'react';
 import { Wrapper, BoxLogin, Input, Button, Card, Image, Gif} from './styles';
 import { useNavigation } from "@react-navigation/native";
 
-import Logo from "../../../assets/icon.png";
+import Logo from "../../../assets/iconnn.png";
 import GifImage from "../../images/loading.gif";
 
 export default function Login() {

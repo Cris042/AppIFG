@@ -61,7 +61,6 @@ Ajustes
 - mostra uma tela de carregando enquato procura as informaçoes em listagem de gados e listagem de piquetes
 
 - mostar as informaçoes dos gados e dos pasto na pagina de gerenciar Gados
-- criar filtros nas paginas de listagem de gados,locaçao de gados e listagem de piquete 
 - as informaçoes do: tipo, status, size e localizaçao nao estao aparecendo corretamente na hora de editar piquete
 
 
