@@ -164,7 +164,7 @@ export default function Map()
 
       )}
 
-       <View style={styles.footer}>
+      <View style={styles.footer}>
 
         <Text style={styles.footerText}>
           { farms.length } Pasto(s) encontrado(s)
@@ -180,7 +180,7 @@ export default function Map()
 
         </RectButton>
 
-       </View>
+      </View>
 
     </View>
 

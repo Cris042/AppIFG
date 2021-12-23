@@ -10,25 +10,36 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+
     "updates": {
       "fallbackToCacheTimeout": 0
     },
+
     "assetBundlePatterns": [
       "**/*"
     ],
+
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "appcom.android.Appif"
+      "bundleIdentifier": "appcom.ios.Appif"
     },
+
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
+
+      "config":{
+        "googleMaps": { "apiKey": "AIzaSyBZswDZZohLLIDIwAUJyWzFTCMDdyC0NMQ" }
+      },
+
       "package": "appcom.android.Appif"
     },
+
     "web": {
       "favicon": "./assets/favicon.png"
     }
+
   }
 }

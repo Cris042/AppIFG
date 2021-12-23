@@ -64,7 +64,7 @@ export default function FazendaEdit()
   }
  
   async function handleEdit() 
-  {  
+  {   
     alert("Ops!")
   } 
 
@@ -87,8 +87,8 @@ export default function FazendaEdit()
         <View style={styles.mapView}>
           <MapView
               initialRegion={{
-                latitude: Farm.latitude,
-                longitude: Farm.longitude,
+                latitude: -16.81508090497519,
+                longitude: -48.02909970297907,
                 latitudeDelta: 0.008,
                 longitudeDelta: 0.008,
               }}
@@ -118,9 +118,9 @@ export default function FazendaEdit()
         <Text style={styles.label}>Tipo</Text>
 
         <Picker mode = "dropdown"  style={styles.picker} >
-          <Picker.Item  label="Java" value= { Farm.type } />
-          <Picker.Item  label="Java" value="java" />
-          <Picker.Item  label="JavaScript" value="js" />
+          <Picker.Item  label="0p 01" value= { Farm.type } />
+          <Picker.Item  label="Op 01" value="java" />
+          <Picker.Item  label="Op 02" value="js" />
         </Picker>
 
         <View style={styles.switchContainer}>
