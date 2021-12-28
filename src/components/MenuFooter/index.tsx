@@ -29,8 +29,8 @@ const Menu: React.FC = () => {
                 {{
                     style: 
                     {
-                        height: 60,
-                        width: 1220,
+                        height: "9%",
+                        width: "280%",
                         paddingLeft: 20,
                         backgroundColor: colors.menu,
                         borderTopWidth: 0,

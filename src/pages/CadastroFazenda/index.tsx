@@ -100,7 +100,7 @@ export default function Data() {
 
       <Text style={styles.label}>Tipo</Text>
 
-      <Picker mode = "dropdown"  style={styles.picker}
+      <Picker mode = "dropdown"  
         selectedValue = { type }
         onValueChange={ ( itemValue, itemIndex ) =>
           setType( itemValue )
@@ -109,7 +109,7 @@ export default function Data() {
         { types.map(( type ) => 
         {
             return (
-              <Picker.Item key = { type.id } label = { type.name } value = { type.name } />
+              <Picker.Item key = { type.id } label = { type.name } value = { type.name } style={styles.picker} />
             );
         })}
        

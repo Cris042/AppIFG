@@ -18,7 +18,7 @@ export default StyleSheet.create({
     borderRadius: 20,
     borderWidth: 1.4,
     borderColor: "#222",
-    height: 200,
+    height: "30%",
     backgroundColor: "#fff",
   },
 

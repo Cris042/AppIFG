@@ -117,10 +117,10 @@ export default function FazendaEdit()
 
         <Text style={styles.label}>Tipo</Text>
 
-        <Picker mode = "dropdown"  style={styles.picker} >
-          <Picker.Item  label="0p 01" value= { Farm.type } />
-          <Picker.Item  label="Op 01" value="java" />
-          <Picker.Item  label="Op 02" value="js" />
+        <Picker mode = "dropdown"  >
+          <Picker.Item  label="0p 01" value= { Farm.type } style={styles.picker} />
+          <Picker.Item  label="Op 01" value="java" style={styles.picker} />
+          <Picker.Item  label="Op 02" value="js" style={styles.picker} />
         </Picker>
 
         <View style={styles.switchContainer}>

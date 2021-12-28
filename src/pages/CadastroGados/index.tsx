@@ -281,9 +281,9 @@ export default function Data() {
         onDateChange={ setDatePurchase }
       />
 
-      <Text style={styles.label}>Pasto ( Opcional ) </Text>
+      <Text style={styles.label}> Pasto ( Opcional ) </Text>
 
-      <Picker mode = "dropdown"  style={styles.picker}
+      <Picker mode = "dropdown" style = { styles.pickerInput } 
         selectedValue = { farm }
         onValueChange={ ( itemValue, itemIndex ) =>
           setFarm( itemValue )
@@ -293,7 +293,7 @@ export default function Data() {
           { farms.map(( farm ) => 
           {
               return (
-                <Picker.Item key = { farm.id } label = { farm.name } value = { farm.id } />
+                <Picker.Item key = { farm.id } style={styles.picker}  label = { farm.name } value = { farm.id } />
               );
           })}
         
@@ -302,7 +302,7 @@ export default function Data() {
 
       <Text style={styles.label}> Matriz ( Opcional ) </Text>
 
-      <Picker  style={styles.picker}
+      <Picker style = { styles.pickerInput }
         selectedValue = { matriz }
         onValueChange={ ( itemValue, itemIndex ) =>
           setMatriz( itemValue )
@@ -312,15 +312,15 @@ export default function Data() {
           {  cattle.map(( cattle ) => 
           {
               return (
-                <Picker.Item key = { cattle.id } label = { cattle.name } value = { cattle.id } />
+                <Picker.Item key = { cattle.id } style={styles.picker} label = { cattle.name } value = { cattle.id } />
               );
           })}
           
       </Picker>
      
-      <Text style={styles.label}>Raça</Text>
+      <Text style={styles.label}> Raça </Text>
 
-      <Picker mode = "dropdown"  style={styles.picker}
+      <Picker mode = "dropdown" style = { styles.pickerInput }
         selectedValue = { breed }
         onValueChange={ ( itemValue, itemIndex ) =>
           setBreed( itemValue )
@@ -329,7 +329,7 @@ export default function Data() {
         { breeds.map(( breed ) => 
         {
             return (
-              <Picker.Item key = { breed.id } label = { breed.name } value = { breed.name } />
+              <Picker.Item key = { breed.id } style={styles.picker}  label = { breed.name } value = { breed.name } />
             );
         })}
 
@@ -337,29 +337,29 @@ export default function Data() {
 
       <Text style={styles.label}> Sexo </Text>
 
-      <Picker mode = "dropdown"  style={styles.picker}
+      <Picker mode = "dropdown" style = { styles.pickerInput }
         selectedValue = { sexo }
         onValueChange={ ( itemValue, itemIndex ) =>
           setSexo( itemValue )
         }>
 
-          <Picker.Item label = "Macho" value = "m" />
-          <Picker.Item label = "Fêmea" value = "f" />
+          <Picker.Item style={styles.picker} label = "Macho" value = "m" />
+          <Picker.Item style={styles.picker} label = "Fêmea" value = "f" />
         
       </Picker>
 
       <Text style={styles.label}> Status </Text>
 
-      <Picker mode = "dropdown"  style={styles.picker}
+      <Picker mode = "dropdown"  
         selectedValue = { status }
         onValueChange={ ( itemValue, itemIndex ) =>
           setStatus( itemValue )
         }>
     
-          <Picker.Item label = "Ativo" value = "a" />
-          <Picker.Item label = "Emprestado" value = "e" />   
-          <Picker.Item label = "Locado" value = "l" />
-          <Picker.Item label = "Morto" value = "m" />
+          <Picker.Item style={styles.picker} label = "Ativo" value = "a" />
+          <Picker.Item style={styles.picker} label = "Emprestado" value = "e" />   
+          <Picker.Item style={styles.picker} label = "Locado" value = "l" />
+          <Picker.Item style={styles.picker} label = "Morto" value = "m" />
         
       </Picker>
  

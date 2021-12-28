@@ -70,6 +70,11 @@ export default StyleSheet.create({
     textAlignVertical: "top",
   },
 
+  pickerInput:{
+     marginBottom: 20,
+     marginTop: 10,
+  },
+
   switchContaine: {
     flexDirection: "row",
     alignItems: "center",
