@@ -18,7 +18,7 @@ export default StyleSheet.create({
     borderRadius: 20,
     borderWidth: 1.4,
     borderColor: "#222",
-    height: "30%",
+    height: "25%",
     backgroundColor: "#fff",
   },
 
@@ -37,17 +37,17 @@ export default StyleSheet.create({
   },
 
   iconCard: {
-    height: 160,
+    height: "90%",
     width: "20%",
-    marginTop: 20,
+    marginTop: 10,
     marginLeft: 6,
-    paddingTop: 50,
+    paddingTop: "16%",
     borderRightWidth: 1.2,
     borderRightColor: "#222",
   },
 
   cardBory: {
-    height: 140,
+    height: "80%",
     width: "70%",
     marginTop: -140,
     paddingTop: 20,
@@ -58,14 +58,14 @@ export default StyleSheet.create({
     textAlign: "center",
     color: "#000",
     marginRight: 30,
-    fontSize: 12,
+    fontSize: 10,
   },
 
   btnCard: {
     textAlign: "center",
     color: "#27b844",
-    fontSize: 16,
-    marginTop: -22,
+    fontSize: 18,
+    marginTop: "-8%",
     marginRight: -70,
   },
 

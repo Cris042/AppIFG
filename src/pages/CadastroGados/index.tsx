@@ -66,7 +66,7 @@ export default function Data() {
   const [ farms , setFarms ] = useState<Farms[]>([]);
   const [ cattle , setCattle ] = useState<Cattle[]>([]);
 
-
+  
   useEffect(() => 
   {
     async function load() 
@@ -326,6 +326,7 @@ export default function Data() {
           setBreed( itemValue )
         }>
 
+        <Picker.Item label = "Escolhar uma Raça" value = "-1" />
         { breeds.map(( breed ) => 
         {
             return (

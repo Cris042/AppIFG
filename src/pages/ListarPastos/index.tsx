@@ -76,9 +76,9 @@ const CatleList: React.FC = () => {
                             </View>
 
                             <View style = { styles.cardBory }>
-                                <Text style = { styles.textCard }> Nome : { farm.name } </Text> 
+                                <Text style = { styles.textCard }> { farm.name } </Text> 
                                 <Text style = { styles.textCard }> Tamanho : { farm.size } </Text>                  
-                                <Text style = { styles.textCard }> Tipo de Pasto : { farm.type } </Text> 
+                                <Text style = { styles.textCard }> Tipo : { farm.type } </Text> 
                                 <Text style = { styles.textCard }> Forragem : { farm.countFood  * farm.size } </Text>        
                             </View>
 

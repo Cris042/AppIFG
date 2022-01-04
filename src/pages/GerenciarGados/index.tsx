@@ -40,14 +40,13 @@ const ChamanageCattle: React.FC = () => {
 
         <View style = { styles.card } >
             <View style = { styles.iconCard }>
-                <MaterialCommunityIcons name = "cow" size={60} color="#000" /> 
+                <MaterialCommunityIcons name = "cow" size={50} color="#000" /> 
             </View>
 
             <View style = { styles.cardBory }>
                 <Text style = { styles.textCard }> Peso Medio: 200 KG </Text> 
                 <Text style = { styles.textCard }> Media de Idade: 10 Anos </Text>                 
-                <Text style = { styles.textCard }> Gados em Atividade: 1.000 </Text> 
-                <Text style = { styles.textCard }> Quantidade de Gados: 1.000 </Text>    
+                <Text style = { styles.textCard }> Gados: 1.000/300 </Text> 
             </View>
 
             <Text style = { styles.btnCard } onPress={ handleNavigatCattleList }> Gerenciar Gado </Text>      
@@ -55,13 +54,13 @@ const ChamanageCattle: React.FC = () => {
 
          <View style = { styles.card } >
             <View style = { styles.iconCard }>
-                <MaterialCommunityIcons name = "tractor-variant" size={60} color="#000" /> 
+                <MaterialCommunityIcons name = "tractor-variant" size={50} color="#000" /> 
             </View>
 
             <View style = { styles.cardBory }>              
-                <Text style = { styles.textCard }> Pastos Utilizados: 25 </Text> 
+                <Text style = { styles.textCard }> Pastos : 25 </Text> 
                 <Text style = { styles.textCard }> Gados Suportada: 1200 </Text>   
-                <Text style = { styles.textCard }> Quantidade de Pasto: 50 </Text> 
+                <Text style = { styles.textCard }> Tamanho Medio : 50 </Text> 
             </View>
                 
             <Text style = { styles.btnCard } onPress={ handleNavigaPiquetList }> Gerenciar Pasto </Text>   

@@ -68,11 +68,10 @@ const CatleList: React.FC = () => {
                             </View>
 
                             <View style = { styles.cardBory }>
-                                <Text style = { styles.textCard }> Nome : { cattle.name } </Text>  
+                                <Text style = { styles.textCard }> { cattle.name } </Text>  
                                 <Text style = { styles.textCard }> Raça : { cattle.breed } </Text>    
-                                <Text style = { styles.textCard }> Peso : { cattle.Weight } </Text> 
                                 <Text style = { styles.textCard }> Sexo : { cattle.sexo == "m" ? "Masculino" : "Femenino" } </Text> 
-                                <Text style = { styles.textCard }> Nacimento : { cattle.dateOfBirth} </Text>                 
+                                <Text style = { styles.textCard }> Idade : { cattle.dateOfBirth} </Text>                 
                             </View>
 
                             <Text style = { styles.btnCard }  > Editar Gado </Text>   

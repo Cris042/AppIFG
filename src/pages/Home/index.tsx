@@ -38,12 +38,12 @@ export default function Map()
     const navigation = useNavigation();
     const [ farms , setFarms ] = useState<Farms[]>([]);
     const [ pickedUsed , setPicketUsed ] = useState<PickedUsed[]>([]);
-
+    
     let count = 0;
 
     const [initialPosition, setInitialPosition] = useState({
-      latitude: -16.81508090497519,
-      longitude: -48.02909970297907,
+      latitude: 0,
+      longitude: 0,
     });
 
     useEffect(() => 
@@ -63,13 +63,11 @@ export default function Map()
               return;
           }
 
-          // const location = await Location.getCurrentPositionAsync();
+          const location = await Location.getCurrentPositionAsync();
 
-          // const { latitude, longitude } = location.coords;
+          const { latitude, longitude } = location.coords;
 
-          // alert( initialPosition.latitude );
-
-          // setInitialPosition( { latitude, longitude } );
+          setInitialPosition( { latitude, longitude } );
 
           const picketUsedCount = await api.get("picketUsed");
        

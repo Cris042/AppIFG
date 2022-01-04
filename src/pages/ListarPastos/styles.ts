@@ -48,28 +48,28 @@ export default StyleSheet.create({
   },
 
   iconCard: {
-    height: 110,
+    height: "90%",
     width: "20%",
-    marginTop: 22.5,
-    marginLeft: 3,
-    paddingTop: 30,
+    marginTop: 10,
+    marginLeft: 6,
+    paddingTop: "16%",
     borderRightWidth: 1.2,
     borderRightColor: "#222",
   },
 
   cardBory: {
-    height: 160,
+    height: "95%",
     width: "70%",
     marginTop: -140,
     paddingTop: 20,
     marginLeft: "30%",
   },
-
+  
   textCard: {
     textAlign: "center",
     color: "#000",
     marginRight: 25,
-    fontSize: 12,
+    fontSize: 10,
   },
 
   btnCard: {
